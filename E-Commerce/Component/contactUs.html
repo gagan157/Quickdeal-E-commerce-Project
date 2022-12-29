@@ -76,6 +76,26 @@
     <!-- -------------------------------nav============================== -->
     <div id="preloader"></div>
     <header id="header" class="postload">
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="offcanvas-body-item">
+            
+            <div class="offcanvas-body-item-img">
+              <img src="../Img/cart/online-shopping (1).png" alt="">
+            </div>
+            <div class="offcanvas-body-item-title">
+              Your Cart is empty !
+            </div>
+            <div class="offcanvas-body-item-dec">
+              It's a good day to buy the items you saved for later
+            </div>
+          </div>
+        </div>
+      </div>
       <nav class="navbar navbar-expand-lg mt-2">
           <div class="container-fluid nav-1">                
             
@@ -93,7 +113,7 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-ul">
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../Component/home.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="../Component/home.html">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="../Component/aboutus.html">About</a>
@@ -110,7 +130,7 @@
                         </ul>
                       </li> -->
                       <li class="nav-item">
-                        <a class="nav-link" href="../Component/contactUs.html">Contact us</a>
+                        <a class="nav-link active" href="../Component/contactUs.html">Contact us</a>
                       </li>
                     </ul>
                     
@@ -126,15 +146,15 @@
                   <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-right-to-bracket"></i>
                     Login</a>                      
-                  </li>
-                  <li class="nav-item">
+                  </li>                  
+                  <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                     <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-cart-shopping mx-1"></i>Cart 
                     </a>
                   </li>
               </ul>
             </div>
           </div>
-      </nav> 
+      </nav>  
 
       <!-- <nav id="nav-cat" class="sub-nav">
         <ul type="none" class="navsub-list-items">
@@ -258,7 +278,71 @@
             </div>
         </div>
     </div>
+    <footer class="postload">
+      <section class="main-footer-section px-5">
 
+        <div class="mid-part">
+          <div class="mid-items">
+            <form class="" action="" method="post">
+              <div class="newletter">Newsletter</div>
+              <div class="form-newsletter position-relative">  
+                <input type="email" id="foot-email" name="foot-email" placeholder="abc@example.com">
+                <button class="" type="button"><i class="fa-solid fa-paper-plane"></i></button>
+              </div>
+            </form>
+            <div class="foot-list">
+              <div class="foot-list-item">
+                <h4>Menu</h4>
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Contact us</a></li>                     
+                </ul>
+              </div>
+              <div class="foot-list-item">
+                <h4>Category</h4>
+                <ul>                      
+                  <li><a href="#">Men Clothes</a></li>
+                  <li><a href="#">Women Clothes</a></li>
+                  <li><a href="#">Tech</a></li>                      
+                  <li><a href="#">Shoes</a></li>                      
+                </ul>
+              </div>
+              <div class="foot-list-item">
+                <h4>Products</h4>
+                <ul>
+                  <li><a href="#">Samsung Tab</a></li>
+                  <li><a href="#">Asus Laptop</a></li>
+                  <li><a href="#">Xiomi Mobile</a></li>
+                  <li><a href="#">Realme Tv</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="right-part">
+          <div class="right-items">
+            <div class="footer-icons">
+              <i class="fa-brands fa-facebook social-icon"></i>
+              <i class="fa-brands fa-github social-icon"></i>
+              <i class="fa-brands fa-twitter social-icon"></i>
+              <i class="fa-brands fa-square-instagram social-icon"></i>
+              <i class="fa-brands fa-youtube social-icon"></i>
+              <i class="fa-brands fa-linkedin social-icon"></i>
+              <i class="fa-brands fa-google social-icon"></i>
+            </div>
+            <!-- <div class="footer-icon-app">
+              <h5><i class="fa-brands fa-apple app-icon"></i> IOS app</h5>
+              <h5><i class="fa-brands fa-android app-icon"></i> Android app</h5>                
+            </div> -->
+          </div>
+        </div>
+      </section>
+      <section class="copyright-sec-footer">
+          <h3><span>&#169;</span>2022 Copyright: Quickdeal.com</h3>
+      </section>
+    </footer>
 
 
     <script src="../Js/custom.js"></script>

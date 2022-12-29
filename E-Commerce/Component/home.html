@@ -15,11 +15,31 @@
 <body>
     <div id="preloader"></div>
     <!-- -------------------------------nav============================== -->
-    <header id="header" class="postload">
+    <header id="header" class="postload">     
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="offcanvas-body-item">
+            
+            <div class="offcanvas-body-item-img">
+              <img src="../Img/cart/online-shopping (1).png" alt="">
+            </div>
+            <div class="offcanvas-body-item-title">
+              Your Cart is empty !
+            </div>
+            <div class="offcanvas-body-item-dec">
+              It's a good day to buy the items you saved for later
+            </div>
+          </div>
+        </div>
+      </div>
       <nav class="navbar navbar-expand-lg mt-2">
           <div class="container-fluid nav-1">                
-            
-            <img class="d-inline-block logoimg" src="../Img/Quickdeal-Logo.PNG" alt="logo">
+            <a href="../Component/home.html">
+            <img class="d-inline-block logoimg" src="../Img/Quickdeal-Logo.PNG" alt="logo"></a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -66,8 +86,8 @@
                   <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-right-to-bracket"></i>
                     Login</a>                      
-                  </li>
-                  <li class="nav-item">
+                  </li>                  
+                  <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                     <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-cart-shopping mx-1"></i>Cart 
                     </a>
                   </li>
@@ -537,19 +557,15 @@
       <!----------------------------- footer--------------------- -->
       <footer class="postload">
         <section class="main-footer-section px-5">
-          <div class="left-part">
-            <div class="footer-heding">
-              <h1>Quickdeal</h1>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium est nam aliquid odit, eum nostrum numquam ut hic amet.</p>
-            </div>
-            <img src="../Img/Secure (3).png" alt="">
-          </div>
 
           <div class="mid-part">
             <div class="mid-items">
-              <form class="position-relative" action="" method="post">
-                <input type="email" id="foot-email" name="foot-email" placeholder="abc@example.com">
-                <button class="" type="button"><i class="fa-solid fa-paper-plane"></i></button>
+              <form class="" action="" method="post">
+                <div class="newletter">Newsletter</div>
+                <div class="form-newsletter position-relative">  
+                  <input type="email" id="foot-email" name="foot-email" placeholder="abc@example.com">
+                  <button class="" type="button"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
               </form>
               <div class="foot-list">
                 <div class="foot-list-item">
@@ -581,7 +597,7 @@
               </div>
             </div>
           </div>
-
+          <hr>
           <div class="right-part">
             <div class="right-items">
               <div class="footer-icons">
@@ -593,12 +609,11 @@
                 <i class="fa-brands fa-linkedin social-icon"></i>
                 <i class="fa-brands fa-google social-icon"></i>
               </div>
-              <div class="footer-icon-app">
+              <!-- <div class="footer-icon-app">
                 <h5><i class="fa-brands fa-apple app-icon"></i> IOS app</h5>
                 <h5><i class="fa-brands fa-android app-icon"></i> Android app</h5>                
-              </div>
+              </div> -->
             </div>
-            <img src="../Img/secure2 (2).png" alt="">
           </div>
         </section>
         <section class="copyright-sec-footer">
