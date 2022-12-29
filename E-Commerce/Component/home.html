@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qickdeal</title>
+    <link rel="icon" type="image/x-icon" href="../Img/favicon.PNG">
+    <link rel="stylesheet" href="../Css/home.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="preloader"></div>
+    <!-- -------------------------------nav============================== -->
+    <header id="header" class="postload">
+      <nav class="navbar navbar-expand-lg mt-2">
+          <div class="container-fluid nav-1">                
+            
+            <img class="d-inline-block logoimg" src="../Img/Quickdeal-Logo.PNG" alt="logo">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">                
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-ul">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../Component/home.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="../Component/aboutus.html">About</a>
+                      </li>
+                      <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Category
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                      </li> -->
+                      <li class="nav-item">
+                        <a class="nav-link" href="../Component/contactUs.html">Contact us</a>
+                      </li>
+                    </ul>
+                    
+                   
+                  </div>
+                </div>
+            </nav>                  
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+              <ul class="navbar-nav mb-2 mb-lg-0 mx-3 nav-ul">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-right-to-bracket"></i>
+                    Login</a>                      
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-cart-shopping mx-1"></i>Cart 
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+      </nav> 
+
+      <nav id="nav-cat" class="sub-nav">
+        <ul type="none" class="navsub-list-items">
+          <li class="navsub-list-item">
+            <div class="sub-nav-item">
+              <img src="../Img/NavCat/perspective_matte-51-128x128.png" alt="" srcset="">
+              <a href="#">Mobiles <i class="fa-solid fa-caret-down"></i></a>
+            </div>
+            <div class="sub-nav-dropdown" type="none">
+              <ul type="none" class="sub-nav-dropdown-item">
+                <li class="brand">Explore</li>
+                <li>New Lanches</li>
+                <li>Best Sellers</li>
+                <li>Combos</li>
+                <li>Gift Pack</li>
+              </ul>
+              <div class="vertical-line">
+                
+              </div>          
+              <ul type="none" class="sub-nav-dropdown-item">
+                <li class="brand">Brands</li>
+                <li>Samsung</li>
+                <li>Apple</li>
+                <li>Huawei</li>
+                <li>Nokia</li>
+                <li>Sony</li>
+                <li>LG</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div class="sub-nav-item">
+              <img src="../Img/NavCat/Clothes-128x128.png" alt="" srcset="">
+              <a href="#">Fashion</a>
+              </div>
+            </li>
+          <li>
+            <div class="sub-nav-item">
+              <img src="../Img/NavCat/perspective_matte-132-128x128.png" alt="" srcset="">
+              <a href="#">Electronics</a>
+              </div></li>
+          <li>
+            <div class="sub-nav-item">
+              <img src="../Img/NavCat/perspective_matte-150-128x128.png" alt="" srcset="">
+              <a href="#">Beauty</a>
+              </div></li>
+          <li>
+            <div class="sub-nav-item">
+              <img src="../Img/NavCat/perspective_matte-499-128x128.png" alt="" srcset="">
+              <a href="#">Toys</a>
+              </div>
+            </li>
+          <li>
+            <div class="sub-nav-item">
+              <img src="../Img/NavCat/perspective_matte-57-128x128.png" alt="" srcset="">
+              <a href="#">Appliances</a>
+              </div>
+            </li>
+          <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Category
+                  </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+          </li> -->
+        </ul>
+      </nav>
+    </header>
+    <div class="postload container-fluid">
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl model-height">
+              <div class="modal-content mod-content">
+                <div class="left-part position-relative">
+                    <img class="login-backgoundimg" src="https://img.freepik.com/free-photo/green-slate_1205-377.jpg?1&w=996&t=st=1671956941~exp=1671957541~hmac=6651c96db233fb54af07520d8b0476b1f7cb20ff465dac6c069451e5020ed81c" alt="" srcset="">
+                    <img class="login-smallimg" src="../Img/Mobile-login-Cristina.png" alt="" srcset="">
+                    <img class="loginsmallimg loginsmallimg-1" src="../Img/shape/1495283757-svg (1).png" alt="" srcset="">
+                    <img class="loginsmallimg loginsmallimg-2" src="../Img/shape/1495283757-svg (2).png" alt="" srcset="">
+                    <img class="loginsmallimg loginsmallimg-3" src="../Img/shape/1495283757-svg (3).png" alt="" srcset="">
+                    <img class="loginsmallimg loginsmallimg-4" src="../Img/shape/1495283757-svg (4).png" alt="" srcset="">
+                    <div class="login-left-text">
+                      <h4>Change The Qaulity</h4>
+                      <h4>Of Your Life</h4>
+                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis voluptate dolorum ex?</p>
+                    </div>
+                </div>
+                <div class="right-part">
+                  <div class="modal-header">
+                    <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="model-body-text">
+                      <h1>Hello Again!</h1>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nulla sit iste, ex harum magni blanditiis expedita aliquid libero</p>
+                    </div>
+                    <form action="" method="post">      
+                      <div class="login-inp position-relative">
+                        <input type="email" id="login-email" name="login-email" placeholder="Email">
+                        <i class="fa-regular fa-at login-inp-icons"></i>
+                      </div> 
+                      <div class="login-inp position-relative">
+                        <input type="password" id="login-password" name="login-password" placeholder="password">
+                        <i class="fa-solid fa-lock login-inp-icons"></i>
+                      </div>               
+                      <div class="check-recovery">
+                        <div class="check">                                                   
+                            <input type="checkbox" name="remember" id="remember">                                                   
+                            <label id="remember">Remmeber me</label>
+                        </div>
+                        <a href="">Recovery Password</a>
+                      </div>
+                      <div class="login-btns">
+                        <button class="login-btn" type="button">Login</button>
+                        <button class="login-btn-google" type="button"><i class="fa-brands fa-google mx-2 text-danger"></i>Sign in with Google</button>
+                      </div>
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button> -->
+                    <h5>Dont't have an account yet?</h5>
+                    <button type="button">Sign Up</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>       
+          <!-- ===================topban================== -->
+          <div class="ban position-relative rounded-2">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="../Img/Banner/Banner-3.jpg" class="d-block bigban" alt="...">
+                </div>
+                <div class="carousel-item ">
+                  <img src="../Img/Banner/Banner-1.jpg" class="d-block bigban" alt="...">
+                  
+                  <img class="giftban" src="../Img/pngwing.com (11).png" alt="">
+                  <img class="giftban2" src="../Img/pngwing.com (11).png" alt="">
+                  <img class="decban" src="../Img/pngwing.com (6).png" alt="">
+                  <img class="decban2" src="../Img/pngwing.com (6).png" alt="">
+                </div>
+                <div class="carousel-item">
+                  <img src="../Img/Banner/Banner-2.jpg" class="d-block bigban" alt="...">
+                </div>
+                
+                
+               
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>         
+          </div> 
+
+            <!-- .............card services --------------------------- -->
+        <div class="mycard my-5 d-flex flex-row justify-content-evenly flex-wrap gap-5 px-5 mb-5">
+          <div id="mycard-1" class="mycard-item">
+            <img style="width: 30%;" src="../Img//servicesimg/free-delivery.png" alt="">
+            <h5>Free,Next Day Delivery</h5>
+          </div>
+          <div id="mycard-2" class="mycard-item">
+            <img style="width: 30%;" src="../Img/servicesimg/recycle.png" alt="" srcset="">
+            <h5>Recycling of Old Products</h5>
+          </div>
+          <div id="mycard-3" class="mycard-item">
+            <img style="width: 30%;" src="../Img/servicesimg/24-hours-support.png" alt="">
+            <h5>24/7 Customer Support</h5>
+          </div>
+          <div id="mycard-4" class="mycard-item">
+            <img style="width: 30%;" src="../Img/servicesimg/product-return.png" alt="" srcset="">
+            <h5>30 DAYS RETURN</h5>
+          </div>
+        </div>
+
+          <!-- ------------------Top caogery------------------- -->
+          <div class="cat my-3 px-5">
+            <h3>Shop Our Top Categories</h3>
+            <div class="swiper mySwiper my-4">
+              <div class="swiper-wrapper">
+                <div class="card swiper-slide position-relative rounded-4 border-0">
+                  <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80" class="card-img-top" alt="fur">
+                  <h4 id="fh1" class="position-absolute text-white cattext">Furniture</h4>
+                </div>
+
+                <div class="card swiper-slide position-relative rounded-4 border-0">
+                  <img src="https://images.unsplash.com/photo-1620999586298-cb742bdb7e40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" class="card-img-top" alt="fur">
+                  <h4 id="fh1" class="position-absolute text-white cattext">Hand Bag</h4>
+                </div>
+                
+                <div class="card swiper-slide position-relative rounded-4 border-0">
+                  <img src="https://images.unsplash.com/photo-1608099269227-82de5da1e4a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80" class="card-img-top" alt="fur">
+                  <h4 class="position-absolute text-white cattext">Books</h4>
+                </div>
+
+                <div class="card swiper-slide position-relative rounded-4 border-0">
+                  <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80" class="card-img-top" alt="fur">
+                  <h4 class="position-absolute text-white cattext" >Tech</h4>
+                </div>
+
+                <div class="card swiper-slide position-relative rounded-4 border-0">
+                  <img src="https://images.unsplash.com/photo-1580327332925-a10e6cb11baa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=407&q=80" class="card-img-top" alt="fur">
+                  <h4 class="position-absolute text-white cattext">Games</h4>
+                </div>
+
+                <div class="card swiper-slide position-relative rounded-4 border-0">
+                  <img src="https://images.unsplash.com/photo-1656944227425-5646be300a14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=427&q=80" class="card-img-top" alt="fur">
+                  <h4 class="position-absolute text-white cattext">Sneaker</h4>
+                </div>
+
+                <div class="card swiper-slide position-relative rounded-4 border-0">
+                  <img src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="card-img-top" alt="fur">
+                  <h4 class="position-absolute text-white cattext">Travel</h4>
+                </div> 
+
+                <div class="card swiper-slide position-relative rounded-4 border-0">
+                  <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80" class="card-img-top" alt="fur">
+                  <h4 class="position-absolute text-white cattext">Fashion</h4>
+                </div>             
+                <div class="card swiper-slide position-relative rounded-4 border-0">
+                  <img src="https://images.unsplash.com/photo-1619451334792-150fd785ee74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=401&q=80" class="card-img-top" alt="fur">
+                  <h4 class="position-absolute text-white cattext">Body care</h4>
+                </div>             
+                <div class="card swiper-slide position-relative rounded-4 border-0">
+                  <img src="https://images.unsplash.com/photo-1552046122-03184de85e08?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="card-img-top" alt="fur">
+                  <h4 class="position-absolute text-white cattext">Skin care</h4>
+                </div>             
+                <div class="card swiper-slide position-relative rounded-4 border-0">
+                  <img src="https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=434&q=80" class="card-img-top" alt="fur">
+                  <h4 class="position-absolute text-white cattext">Toys</h4>
+                </div>             
+                <div class="card swiper-slide position-relative rounded-4 border-0">
+                  <img src="https://images.unsplash.com/photo-1565674244283-993fb27a215f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" class="card-img-top" alt="fur">
+                  <h4 class="position-absolute text-white cattext">Pets</h4>
+                </div>             
+
+              </div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+              <!-- <div class="swiper-pagination"></div> -->
+            </div>    
+          </div>
+          
+          <!-------------------------------------- banner------------------ -->
+          <div class="banoff my-5 rounded-4 position-relative">
+            <div class="d-flex flex-column justify-content-center align-content-center w-50 h-100 text-center gap-2 track-text position-relative">
+              <h2>Grab Upto 50% Off On</h2>
+              <h2>Selected HeadPhone</h2>
+              <button class="mainbtn align-self-center mt-3">Buy Now</button>
+            </div>
+            <img class="bandec" src="../Img/pngwing.com (6).png" alt="dec">
+            <img class="banspark" src="../Img/pngwing.com (4).png" alt="spark">
+          </div>
+
+         <!-----------------------recomen category (in spotlight)------------>
+         <div class="product px-5">
+            <h3>In The SpotLight</h3>
+            <div class="catgerygroup">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li id="electronics" onclick={getdata(this)} class="page-item"><a class="page-link cat-active">electronics</a></li>
+                  <li id="jewelery" onclick={getdata(this)} class="page-item"><a class="page-link ">jewelry</a></li>
+                  <li id="men's clothing" onclick={getdata(this)} class="page-item"><a class="page-link">men's clothing</a></li>
+                  <li id="women's clothing" onclick={getdata(this)} class="page-item"><a class="page-link">women's clothing</a></li>
+                  <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+                </ul>
+              </nav>
+              <div class="catageryWisePrd">
+                
+                <div class="catageryWisePrd-loader"><img src="../Img/loadrer/Spinner.gif" alt=""></div>
+                <!-- <div class="catwise-card">
+                  <div class="catwise-card-img">
+                    <img src="https://images.unsplash.com/photo-1618183536229-264272f21ff8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="">
+                  </div>
+                  <div class="catwise-card-body">
+                    <div class="price">$4.23 <span>$5.24</span></div>
+                    <div class="name">Coca Cola</div>
+                    <div class="Rating-star">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span> <span>(4.2)</span>
+                    </div>
+                    <div class="categey">
+                      fashion
+                    </div>
+                  </div>
+                  <div class="catwise-card-button">
+                    <button type="button">Buy Now</button>
+                  </div>
+                </div> -->
+                
+              </div>
+              <!-- <div id="electronics" class="catgery-items position-relative">
+                <img src="https://images.unsplash.com/photo-1595303526913-c7037797ebe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1229&q=80" alt="electronics">
+                <h3 class="catgery-name">electronics</h3>
+                <div class="catgery-showmore">
+                  <p class="text-white m-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat ducimus nulla laboriosam, dolorum maxime soluta vel, harum earum velit impedit pariatur aut hic doloribus ullam ratione necessitatibus. Dolores, accusantium at.</p>
+                  <div class="rating-start">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                  </div>
+                  <button class="mainbtn obs-btn">Show more</button>
+                </div>
+              </div>
+              <div id="jewelery" class="catgery-items position-relative">
+                <img src="https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="jewelery">
+                <h3 class="catgery-name">jewelry</h3>
+                <div class="catgery-showmore">
+                  <p class="text-white m-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat ducimus nulla laboriosam, dolorum maxime soluta vel, harum earum velit impedit pariatur aut hic doloribus ullam ratione necessitatibus. Dolores, accusantium at.</p>
+                  <div class="rating-start">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                  </div>
+                  <button class="mainbtn">Show more</button>
+                </div>
+              </div>
+              <div id="men'sclothing" class="catgery-items position-relative">
+                <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWVucyUyMGZhc2hpb258ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                <h3 class="catgery-name">men's clothing</h3>
+                <div class="catgery-showmore">
+                  <p class="text-white m-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat ducimus nulla laboriosam, dolorum maxime soluta vel, harum earum velit impedit pariatur aut hic doloribus ullam ratione necessitatibus. Dolores, accusantium at.</p>
+                  <div class="rating-start">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                  </div>
+                  <button class="mainbtn">Show more</button>
+                </div>
+              </div>
+              <div id="women'sclothing" class="catgery-items position-relative">
+                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
+                <h3 class="catgery-name">women's clothing</h3>
+                <div class="catgery-showmore">
+                  <p class="text-white m-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat ducimus nulla laboriosam, dolorum maxime soluta vel, harum earum velit impedit pariatur aut hic doloribus ullam ratione necessitatibus. Dolores, accusantium at.</p>
+                  <div class="rating-start">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                  </div>
+                  <button class="mainbtn">Show more</button>
+                </div>
+              </div> -->
+            </div>
+         </div>
+
+         <!----------------------------------- twoban-------------------------------- -->
+        <div class="twoban px-5 my-5">
+          <div class="lefttowban">
+            <img class="ban-leftimg" src="../Img/Towban/MiniBan-1.jpg" alt="" srcset="">
+            
+          </div>
+          <div class="righttwoban">          
+            <img class="ban-rightimg" src="../Img/Towban/MiniBan-2 (2).jpg" alt="">
+            <!-- <img class="hatimg" src="../Img/christmas-hat-png-15.png" alt="hat">               -->
+          </div>
+        </div>
+        <!-------------------------- products------------------ -->
+        <div class="products px-5 my-5">
+          <h3>Top Products</h3>
+          <div class="prd-group">
+            <!-- <div class="prd-card">
+              <div class="prd-img">
+                <img src="https://images.unsplash.com/photo-1620189507195-68309c04c4d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
+              </div>
+              <div class="prd-body">
+                <div class="prd-titles">
+                  <div class="prd-title">Elegant designed cofee</div>
+                  <div class="prd-heart-logo"><i class="fa-regular fa-heart"></i></div>
+                </div>
+                <div class="prd-cat">electronic</div>
+                <div class="prd-rating-start">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span> <span>(4.2)</span>
+                </div>
+                <div class="prd-price">
+                  $15.99 <span>$20</span> <span>12% off</span> 
+                </div>
+              </div>
+              <div class="prd-btn">
+                <button type="button">Add to cart</button>
+              </div>
+            </div>             -->
+                   
+            
+          </div>
+            <!-- <nav aria-label="..." class="d-flex flex-row justify-content-center align-content-center">
+              <ul class="pagination pagination-sm">
+                <li class="page-item active" aria-current="page">
+                  <span class="page-link">1</span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+              </ul>
+            </nav> -->
+          
+        </div>
+       
+        <!-- ---------------------------------------------service-------------- -->
+        <div class="Service my-5 px-5">
+          <h3>Service To Help You Shop</h3>
+          <div class="row row-cols-1 row-cols-md-3 g-4 py-2 Service-grp">
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title pt-2">Frequently Asked Question</h4>
+                  <p class="card-text pt-3">Update On Safe shopping in our stores</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="...">
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title pt-2">Online Payment Process</h4>
+                  <p class="card-text pt-3">Update On Safe shopping in our stores.</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="...">
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title pt-2">Home Delivery Options</h4>
+                  <p class="card-text pt-3">Update On Safe shopping in our stores.</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1572195577046-2f25894c06fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" class="card-img-top" alt="...">
+              </div>
+            </div>            
+          </div>
+        </div> 
+        
+        
+        
+      </div>
+      <!----------------------------- footer--------------------- -->
+      <footer class="postload">
+        <section class="main-footer-section px-5">
+          <div class="left-part">
+            <div class="footer-heding">
+              <h1>Quickdeal</h1>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium est nam aliquid odit, eum nostrum numquam ut hic amet.</p>
+            </div>
+            <img src="../Img/Secure (3).png" alt="">
+          </div>
+
+          <div class="mid-part">
+            <div class="mid-items">
+              <form class="position-relative" action="" method="post">
+                <input type="email" id="foot-email" name="foot-email" placeholder="abc@example.com">
+                <button class="" type="button"><i class="fa-solid fa-paper-plane"></i></button>
+              </form>
+              <div class="foot-list">
+                <div class="foot-list-item">
+                  <h4>Menu</h4>
+                  <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact us</a></li>                     
+                  </ul>
+                </div>
+                <div class="foot-list-item">
+                  <h4>Category</h4>
+                  <ul>                      
+                    <li><a href="#">Men Clothes</a></li>
+                    <li><a href="#">Women Clothes</a></li>
+                    <li><a href="#">Tech</a></li>                      
+                    <li><a href="#">Shoes</a></li>                      
+                  </ul>
+                </div>
+                <div class="foot-list-item">
+                  <h4>Products</h4>
+                  <ul>
+                    <li><a href="#">Samsung Tab</a></li>
+                    <li><a href="#">Asus Laptop</a></li>
+                    <li><a href="#">Xiomi Mobile</a></li>
+                    <li><a href="#">Realme Tv</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="right-part">
+            <div class="right-items">
+              <div class="footer-icons">
+                <i class="fa-brands fa-facebook social-icon"></i>
+                <i class="fa-brands fa-github social-icon"></i>
+                <i class="fa-brands fa-twitter social-icon"></i>
+                <i class="fa-brands fa-square-instagram social-icon"></i>
+                <i class="fa-brands fa-youtube social-icon"></i>
+                <i class="fa-brands fa-linkedin social-icon"></i>
+                <i class="fa-brands fa-google social-icon"></i>
+              </div>
+              <div class="footer-icon-app">
+                <h5><i class="fa-brands fa-apple app-icon"></i> IOS app</h5>
+                <h5><i class="fa-brands fa-android app-icon"></i> Android app</h5>                
+              </div>
+            </div>
+            <img src="../Img/secure2 (2).png" alt="">
+          </div>
+        </section>
+        <section class="copyright-sec-footer">
+            <h3><span>&#169;</span>2022 Copyright: Quickdeal.com</h3>
+        </section>
+      </footer>
+
+   
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="../Js/custom.js"></script>
+    <script src="../Js/home.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>

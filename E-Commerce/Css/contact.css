@@ -1,0 +1,267 @@
+
+:root{
+    --primaryColor : #6610f2;
+    --secondryColor:#198754;
+    --textColor:#136740;
+    --footertextColor : rgb(114, 114, 114);
+}
+.container-fluid .contain{
+    width: 100%;
+    height: 80vh;
+    /* background-color: aqua; */
+}
+.container-fluid .contain .contain-items{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-fluid .contain .contain-items .contain-item{
+    width: 50%;
+    height: 100%;
+}
+.container-fluid .contain .contain-items .contactimgs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-fluid .contain .contain-items .contactimgs img{
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: auto;
+}
+.container-fluid .contain .contain-items .contacttext{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-fluid .contain .contain-items .contacttext .contacttext-group{
+   /* width: 70%; */
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   /* align-items: center; */
+   line-height: 4rem;
+}
+.container-fluid .contain .contain-items .contacttext .contacttext-group> :nth-child(1){
+    font-size: 3rem;
+    
+}
+.container-fluid .contain .contain-items .contacttext .contacttext-group> :nth-child(2){    
+    font-size: 5rem;
+    font-weight: 600;
+    letter-spacing: .5rem;
+    color: var(--secondryColor);
+    
+}
+.container-fluid .contain .contain-items .contacttext .contacttext-group> :nth-child(3){    
+    font-size: 5rem;
+    font-weight: 600;
+    letter-spacing: .5rem;
+    color: var(--secondryColor);
+    
+}
+.container-fluid .contain .contain-items .contacttext .contacttext-group> :nth-child(4){    
+    font-size: 3rem;
+}
+.container-fluid .contain .contain-items .contacttext .contacttext-group .contacttext-group-btns{
+    display: flex;
+    justify-content: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 0%;
+    margin: 1rem 0;
+}
+.container-fluid .contain .contain-items .contacttext .contacttext-group .contacttext-group-btns button{
+    width: 80%;
+    border: none;
+    background-color: var(--secondryColor);
+    border-radius: 10px;
+    color: white;
+    font-size: 1.5rem;
+    transition: .5s;
+}
+.container-fluid .contain .contain-items .contacttext .contacttext-group .contacttext-group-btns button:hover
+{
+    background-color: var(--textColor);
+}
+.container-fluid .contain .contain-items .contacttext .contacttext-group .contacttext-group-btns> :last-child{
+    color: var(--secondryColor);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 3rem;
+}
+
+
+.container-fluid .contain-1{
+    width: 100%;
+    height: 60vh;
+    background-color: rgb(240, 240, 240);
+}
+.container-fluid .contain-1 .contain-1-items{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text{
+    width: 80%;
+    height: 100%;
+    /* background-color: aqua; */
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-img{
+    width: 50%;
+    height: 100%;
+    /* background-color: burlywood; */
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-img img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: rgb(123, 120, 120);
+    padding-left: 6rem;
+}
+
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-1{
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    color: rgb(20, 18, 18);
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-1 span{
+    color: var(--secondryColor);
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-2{
+    font-size: 1.5rem;
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-3{
+    font-size: 1.5rem;
+    color: var(--secondryColor);
+    text-decoration: underline;
+    margin: 2rem 0;
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-3 a{
+    color: var(--secondryColor);    
+}
+
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4 .note{
+   font-size: 1.3rem;
+   border-right: 2px solid lightgray;
+   padding: 1rem;
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4 .note-detail{
+    font-size: 1.3rem;
+    line-height: .2rem;
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4 .note-detail hr{
+    position: relative;
+    height: 2px;
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4 .note-detail> :first-child{
+    padding-left: 1rem;
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4 .note-detail> :last-child{
+    padding-left: 1rem;
+}
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4 .note-detail> :last-child span{
+    color: rgb(20, 18, 18);
+}
+
+
+.container-fluid .contain-2{
+    width: 100%;
+    height: 100vh;
+    margin: 3rem 0;
+}
+.container-fluid .contain-2 .contain-2-items{
+    width: 100%;
+    height: 100%;
+}
+.container-fluid .contain-2 .contain-2-items .contain-2-form-title{
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin: 0 auto;
+    text-align: center;
+}
+.container-fluid .contain-2 .contain-2-items form{
+    /* background-color: aqua; */
+    margin: 0 auto;
+    width: 80%;
+    /* min-height: 50%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 3rem;
+    
+}
+.container-fluid .contain-2 .contain-2-items form input{
+    height: 40px;
+    border: none;
+    border-bottom: 2px solid rgb(141, 141, 141);
+    margin-bottom: 3rem;
+    padding-left: .5rem;
+    transition: 1s;
+}
+
+.container-fluid .contain-2 .contain-2-items form input:focus{
+    outline: none;
+}
+.container-fluid .contain-2 .contain-2-items form input:not(:placeholder-shown){
+    border-bottom: 2px solid var(--secondryColor);
+}
+.container-fluid .contain-2 .contain-2-items form textarea:not(:placeholder-shown){
+    border: 2px solid var(--secondryColor);
+}
+.container-fluid .contain-2 .contain-2-items form #contact-name:hover{
+    border-bottom:2px solid var(--secondryColor);
+}
+.container-fluid .contain-2 .contain-2-items form #contact-email:hover{
+    border-bottom:2px solid var(--secondryColor);
+}
+.container-fluid .contain-2 .contain-2-items form #contact-msg:hover{
+    border:2px solid var(--secondryColor);
+}
+.container-fluid .contain-2 .contain-2-items form textarea{
+    margin-bottom: 3rem;
+    padding-left: .5rem;
+    transition: 1s;
+    border: 2px solid rgb(141, 141, 141);
+    border-radius: 5px;
+}
+.container-fluid .contain-2 .contain-2-items form textarea:focus{
+    outline: none;
+}
+.container-fluid .contain-2 .contain-2-items form button{
+    border: none;
+    background-color: var(--secondryColor);
+    color: white;
+    padding: .5rem 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.container-fluid .contain-2 .contain-2-items form button:hover{
+    background-color: var(--textColor);
+}

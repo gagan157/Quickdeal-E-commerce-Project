@@ -1,0 +1,81 @@
+:root{
+    --primaryColor : #6610f2;
+    --secondryColor:#198754;
+    --textColor:#136740;
+    --footertextColor : rgb(114, 114, 114);
+}
+.container-fluid .about-1{
+    width: 100%;
+    height: 500px;
+}
+.container-fluid .about-1 .about-1-items{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-fluid .about-1 .about-1-items .about-1-item-txt{
+    width: 50%;
+    /* background-color: rgb(4, 48, 48); */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-fluid .about-1 .about-1-items .about-1-item-img{
+    width: 50%;
+    height: 100%;
+}
+.container-fluid .about-1 .about-1-items .about-1-item-txt > div{
+    padding: 1rem 5rem;
+    font-size: 1.5rem;
+    text-align: justify;
+}
+.container-fluid .about-1 .about-1-items .about-1-item-img img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+
+.container-fluid .about-2{
+    width: 100%;
+    height: 500px;
+    background-color: rgb(235, 235, 235);
+}
+
+.container-fluid .about-2 .about-2-items{
+    width: 100;
+    height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+.container-fluid .about-2 .about-2-items .about-2-item-img{
+    flex: 50%;
+}
+.container-fluid .about-2 .about-2-items .about-2-item-txt{
+    flex: 50%;
+    padding: 0 5rem;
+}
+.container-fluid .about-2 .about-2-items .about-2-item-txt :first-child{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--secondryColor);
+}
+.container-fluid .about-2 .about-2-items .about-2-item-txt :last-child{
+    line-height: 2rem;
+    font-size: 1em;
+    text-align: justify;
+}
+.container-fluid .about-2 .about-2-items .about-2-item-img img{
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
