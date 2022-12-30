@@ -18,6 +18,7 @@ var swiper = new Swiper(".mySwiper", {
   });
 
 
+  //featch all prd
   let url = 'https://fakestoreapi.com/products'
   let fetchproducts = async function(url){
     let responce = await fetch(url)
@@ -147,3 +148,34 @@ async function categoryWisedata(url){
   let data = await response.json()
   return data;  
 }
+
+
+
+//scrolling ....
+const slider = document.querySelector('.catageryWisePrd');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener('mousedown', (e) => {
+  isDown = true;
+  slider.classList.add('active');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener('mouseleave', () => {
+  isDown = false;
+  slider.classList.remove('active');
+});
+slider.addEventListener('mouseup', () => {
+  isDown = false;
+  slider.classList.remove('active');
+});
+slider.addEventListener('mousemove', (e) => {
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX); 
+  slider.scrollLeft = scrollLeft - walk;
+  console.log(walk);
+});
