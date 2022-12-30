@@ -116,30 +116,35 @@ function getdata(e){
   let data = categoryWisedata(categoryWiseUrl)
   Promise.all([data]).then((result)=>{
     divcatwiseprd.innerHTML = ""; 
-    result[0].forEach(element => {
-      divcatwiseprd.innerHTML += `<div class="catwise-card">
-      <div class="catwise-card-img">
-        <img src="${element.image}" alt="">
-      </div>
-      <div class="catwise-card-body">
-        <div class="price">$${element.price} <span>$5.24</span></div>
-        <div class="name truncate-title">${element.title}</div>
-        <div class="Rating-star">
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span> <span>(${element.rating.rate})</span>
+    
+    
+    
+      result[0].forEach(element => {
+        divcatwiseprd.innerHTML += `<div class="catwise-card">
+        <div class="catwise-card-img">
+          <img src="${element.image}" alt="">
         </div>
-        <div class="categey">
-          ${element.category}
+        <div class="catwise-card-body">
+          <div class="price">$${element.price} <span>$5.24</span></div>
+          <div class="name truncate-title">${element.title}</div>
+          <div class="Rating-star">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span> <span>(${element.rating.rate})</span>
+          </div>
+          <div class="categey">
+            ${element.category}
+          </div>
         </div>
-      </div>
-      <div class="catwise-card-button">
-        <button type="button">Buy Now</button>
-      </div>
-    </div>`
-    });
+        <div class="catwise-card-button">
+          <button type="button">Buy Now</button>
+        </div>
+      </div>`
+      });
+    
+    
   })
 }
 //fetch api according to catagery
@@ -151,7 +156,10 @@ async function categoryWisedata(url){
 
 
 
-//scrolling ....
+
+
+
+//scrolling ....drag
 const slider = document.querySelector('.catageryWisePrd');
 let isDown = false;
 let startX;
@@ -177,5 +185,9 @@ slider.addEventListener('mousemove', (e) => {
   const x = e.pageX - slider.offsetLeft;
   const walk = (x - startX) * 3; 
   slider.scrollLeft = scrollLeft - walk;
-  console.log(walk);
+
 });
+
+
+
+

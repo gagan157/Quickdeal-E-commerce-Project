@@ -781,6 +781,30 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
     cursor: grab;
     scroll-padding-bottom: 1rem;
     padding: 1rem 0;
+    position: relative;
+}
+.product .catgerygroup .catageryWisePrd .catwise-lefrig-btns{
+    position: absolute;
+    top: 40%;
+    display: inline-block;
+    height: fit-content;
+    padding: .4rem .9rem;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    color: white;
+    background-color: rgb(25, 135, 84, 25%);
+    
+    z-index: 500;
+    cursor: pointer;
+    transition: .5s;
+}
+.product .catgerygroup .catageryWisePrd .catwise-lefrig-btns:hover{
+    background-color: var(--secondryColor);
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgb(25, 135, 84, 25%);
+}
+.product .catgerygroup .catageryWisePrd .cateprd-right-btn{
+    right: 0;
 }
 .product .catgerygroup .catageryWisePrd .catageryWisePrd-loader{
     width: 100px;
@@ -1434,11 +1458,40 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
 }
 
 
+/* ==========================whats fixed icon========================= */
+.whatsapp-icons{
+    display: inline-block;
+    position: fixed;
+    bottom: -100px;
+    right: 10px;
+    font-size: 2rem;
+    background-color: green;
+    color: white;
+    border-radius: 50%;
+    padding: .5rem 1rem;
+    box-shadow: 0 0 10px #8888;
+    cursor: pointer;
+    z-index: 900;
+    transition: .8s;
+    opacity: 0;
+}
+.whatsapp-icons:hover{
+    box-shadow: 0 0 20px rgba(37, 37, 37, 0.533);
+}
 
 
 
-
-
+@media only screen and (min-width:768px){
+    .whatsapp-icons{
+        display: inline-block;
+        position: fixed;
+        bottom: -100px;
+        right: 15px;
+        font-size: 2.5rem;       
+        padding: .5rem 1.2rem;
+        
+    }
+}
 
 
 

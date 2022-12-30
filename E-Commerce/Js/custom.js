@@ -2,14 +2,21 @@ var preloader = document.getElementById('preloader');
 // var postload = document.getElementById('postload');
 var classpostload = document.getElementsByClassName('postload')
 
-
 window.addEventListener('load',()=>{
+  let whatsappicon = document.getElementsByClassName('whatsapp-icons')[0]
   for(let postload of classpostload){
           setTimeout(()=>{
             postload.classList.remove('postload')     
             preloader.style.display = 'none';
           },1000)
-        }
+    }
+    setTimeout(()=>{
+      whatsappicon.style.opacity = '1'
+      whatsappicon.style.bottom = '60px'      
+    },1000)
+    setTimeout(()=>{
+      whatsappicon.style.bottom = '30px'      
+    },1500)
 })
 
 
