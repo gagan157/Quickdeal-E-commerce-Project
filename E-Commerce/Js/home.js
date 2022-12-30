@@ -112,7 +112,7 @@ function getdata(e){
   let categoryWiseUrl = `https://fakestoreapi.com/products/category/${e.id}`
  
   let divcatwiseprd = document.getElementsByClassName('catageryWisePrd')[0]
-  divcatwiseprd.innerHTML = ` <div class="catageryWisePrd-loader"><img src="../Img/loadrer/Spinner.gif" alt=""></div>`;
+  divcatwiseprd.innerHTML = ` <div class="catageryWisePrd-loader"><img src="./Img/loadrer/Spinner.gif" alt=""></div>`;
   let data = categoryWisedata(categoryWiseUrl)
   Promise.all([data]).then((result)=>{
     divcatwiseprd.innerHTML = ""; 
