@@ -7,23 +7,26 @@
 }
 .container-fluid .contain{
     width: 100%;
-    height: 80vh;
-    /* background-color: aqua; */
+    min-height: 80vh;
+    padding: 2rem;
+   
 }
 .container-fluid .contain .contain-items{
     width: 100%;
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
 .container-fluid .contain .contain-items .contain-item{
-    width: 50%;
+    flex: 50%;
     height: 100%;
 }
 .container-fluid .contain .contain-items .contactimgs{
+    /* flex: none; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,13 +34,15 @@
 .container-fluid .contain .contain-items .contactimgs img{
     object-fit: cover;
     object-position: center;
-    width: 100%;
+    max-width: 100%;
+    width: 650px;
     height: auto;
 }
 .container-fluid .contain .contain-items .contacttext{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    padding-left: 5rem;
 }
 .container-fluid .contain .contain-items .contacttext .contacttext-group{
    /* width: 70%; */
@@ -101,31 +106,39 @@
 
 .container-fluid .contain-1{
     width: 100%;
-    height: 60vh;
+    /* height: 60vh; */
+    min-height: 60vh;
     background-color: rgb(240, 240, 240);
+    padding: 2rem;
 }
 .container-fluid .contain-1 .contain-1-items{
     width: 100%;
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 .container-fluid .contain-1 .contain-1-items .contain-1-item-text{
-    width: 80%;
+    flex: 50%;
     height: 100%;
     /* background-color: aqua; */
 }
+.container-fluid .contain-1 .contain-1-items .contain-1-item-text>div{
+    margin: 0 auto;
+   
+}
 .container-fluid .contain-1 .contain-1-items .contain-1-item-img{
-    width: 50%;
+    flex:none;
     height: 100%;
     /* background-color: burlywood; */
 }
 .container-fluid .contain-1 .contain-1-items .contain-1-item-img img{
     object-fit: cover;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: 600px;
     margin: 0 auto;
     text-align: center;
 }
@@ -135,7 +148,7 @@
     justify-content: center;
     align-items: flex-start;
     color: rgb(123, 120, 120);
-    padding-left: 6rem;
+    padding-left: 1rem;
 }
 
 .container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-1{
@@ -172,11 +185,11 @@
 }
 .container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4 .note-detail{
     font-size: 1.3rem;
-    line-height: .2rem;
 }
 .container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4 .note-detail hr{
     position: relative;
-    height: 2px;
+    height: 1px;
+    margin: .2rem;
 }
 .container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4 .note-detail> :first-child{
     padding-left: 1rem;
@@ -264,4 +277,103 @@
 
 .container-fluid .contain-2 .contain-2-items form button:hover{
     background-color: var(--textColor);
+}
+
+
+
+
+@media only screen and (max-width:992px) {
+    .container-fluid .contain .contain-items .contain-item{
+        flex: 100%;
+    }
+    .container-fluid .contain .contain-items .contactimgs{
+        flex: 100%;
+    }
+    .container-fluid .contain .contain-items .contacttext{
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .container-fluid .contain-1{
+        padding-top: 5rem;
+    }
+    .container-fluid .contain-1 .contain-1-items .contain-1-item-text{
+        flex: 100%;
+    }
+    .container-fluid .contain-2 .contain-2-items form{
+        padding: 2rem 0;
+        width: 90%;
+    }
+}
+@media only screen and (max-width:600px){
+    .container-fluid .contain-1{
+        padding: 2rem .5;
+    }
+    .container-fluid .contain-1 .contain-1-items .contain-1-item-img img{
+        width: 400px;
+    }
+}
+
+@media only screen and (max-width:426px){
+    .container-fluid .contain{
+        padding: 1rem;
+    }
+    .container-fluid .contain-1{
+        padding: 1.5rem;
+    }
+    .container-fluid .contain .contain-items .contacttext .contacttext-group{
+        line-height: 3rem;
+     }
+    .container-fluid .contain .contain-items .contacttext .contacttext-group> :nth-child(1){
+        font-size: 2rem;
+    }
+    .container-fluid .contain .contain-items .contacttext .contacttext-group> :nth-child(2){    
+        font-size: 3rem;
+        font-size: 700;
+    }
+    .container-fluid .contain .contain-items .contacttext .contacttext-group> :nth-child(3){    
+        font-size: 3rem;
+        font-size: 700;
+        
+    }
+    .container-fluid .contain .contain-items .contacttext .contacttext-group> :nth-child(4){    
+        font-size: 2rem;
+    }
+    .container-fluid .contain .contain-items .contacttext .contacttext-group .contacttext-group-btns{
+        margin: .5rem 0;
+    }
+    .container-fluid .contain .contain-items .contacttext .contacttext-group .contacttext-group-btns button{
+        font-size: 1rem;
+        transition: .5s;
+    }
+
+    .container-fluid .contain-1 .contain-1-items .contain-1-item-img img{
+        width: 300px;
+    }
+    .container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-1{
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+    .container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-1 span{
+        font-size: 3rem!important;
+    }
+
+    .container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4{
+        flex-direction: column;
+    }
+    .container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4 .note{
+        border: none;
+        align-self: flex-start;
+        padding: 0;
+    }
+    .container-fluid .contain-1 .contain-1-items .contain-1-item-text .contain-1-text-4 .note-detail> :last-child span{
+        font-size: 1.3rem!important;
+        color: rgb(20, 18, 18);
+    }
+}
+
+@media only screen and (max-width:321px){
+    .container-fluid .contain-1{
+        padding: 1rem;
+    }
 }

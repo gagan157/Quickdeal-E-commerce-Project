@@ -105,6 +105,9 @@ window.addEventListener('load',fetchOneCategoryData);
 
 //click btn then fetch category wsie data
 function getdata(e){
+  let text = document.getElementById(`${e.id}`).innerText;
+  document.getElementById('select-cat-dropdown-chengename').innerText = text;
+
   let categoryWiseUrl = `https://fakestoreapi.com/products/category/${e.id}`
  
   let divcatwiseprd = document.getElementsByClassName('catageryWisePrd')[0]

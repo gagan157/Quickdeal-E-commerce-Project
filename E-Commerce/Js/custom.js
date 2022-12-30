@@ -21,11 +21,16 @@ window.addEventListener('scroll',()=>{
  
   if(this.scrollY > 1){
     header.style.boxShadow = "0 1px 5px #888888";
-    navcat.style.display = "none"
+    if(navcat !== null){
+      navcat.style.display = "none"
+    }
   }
   else{
     header.style.boxShadow = "";
-    navcat.style.display = "block"
+    if(navcat !== null){
+      navcat.style.display = "block"
+    }
+    
   }
 
   // if(this.scrollY > 1751.199951171875){

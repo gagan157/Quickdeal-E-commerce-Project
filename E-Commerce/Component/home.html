@@ -47,9 +47,6 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">                
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-ul">
                       <li class="nav-item">
@@ -58,17 +55,7 @@
                       <li class="nav-item">
                         <a class="nav-link" href="../Component/aboutus.html">About</a>
                       </li>
-                      <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Category
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                      </li> -->
+                  
                       <li class="nav-item">
                         <a class="nav-link" href="../Component/contactUs.html">Contact us</a>
                       </li>
@@ -168,13 +155,13 @@
       </nav>
     </header>
     <div class="postload container-fluid">
-          <!-- Modal -->
+          <!-- Modal login page-->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl model-height">
               <div class="modal-content mod-content">
                 <div class="left-part position-relative">
-                    <img class="login-backgoundimg" src="https://img.freepik.com/free-photo/green-slate_1205-377.jpg?1&w=996&t=st=1671956941~exp=1671957541~hmac=6651c96db233fb54af07520d8b0476b1f7cb20ff465dac6c069451e5020ed81c" alt="" srcset="">
-                    <img class="login-smallimg" src="../Img/Mobile-login-Cristina.png" alt="" srcset="">
+                    <img class="login-backgoundimg" src="../Img/green-slate.jpg" alt="" srcset="">
+                    <img class="login-smallimg loginsmallimg-main" src="../Img/Mobile-login-Cristina.png" alt="" srcset="">
                     <img class="loginsmallimg loginsmallimg-1" src="../Img/shape/1495283757-svg (1).png" alt="" srcset="">
                     <img class="loginsmallimg loginsmallimg-2" src="../Img/shape/1495283757-svg (2).png" alt="" srcset="">
                     <img class="loginsmallimg loginsmallimg-3" src="../Img/shape/1495283757-svg (3).png" alt="" srcset="">
@@ -182,7 +169,7 @@
                     <div class="login-left-text">
                       <h4>Change The Qaulity</h4>
                       <h4>Of Your Life</h4>
-                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis voluptate dolorum ex?</p>
+                      <p>log in to continue to more Shopping</p>
                     </div>
                 </div>
                 <div class="right-part">
@@ -282,7 +269,7 @@
 
           <!-- ------------------Top caogery------------------- -->
           <div class="cat my-3 px-5">
-            <h3>Shop Our Top Categories</h3>
+            <h3 class="contain-heading">Shop Our Top Categories</h3>
             <div class="swiper mySwiper my-4">
               <div class="swiper-wrapper">
                 <div class="card swiper-slide position-relative rounded-4 border-0">
@@ -369,9 +356,17 @@
                   <li id="jewelery" onclick={getdata(this)} class="page-item"><a class="page-link ">jewelry</a></li>
                   <li id="men's clothing" onclick={getdata(this)} class="page-item"><a class="page-link">men's clothing</a></li>
                   <li id="women's clothing" onclick={getdata(this)} class="page-item"><a class="page-link">women's clothing</a></li>
-                  <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
                 </ul>
               </nav>
+              <div class="select-cat-dropdown">
+                <span id="select-cat-dropdown-chengename">Electronics</span> <i class="fa-solid fa-angle-down"></i>
+                <ul type="none" class="select-cat-dropdown-item">
+                  <li id="electronics" onclick={getdata(this)} class="page-item"><a class="page-link cat-active">electronics</a></li>
+                  <li id="jewelery" onclick={getdata(this)} class="page-item"><a class="page-link ">jewelry</a></li>
+                  <li id="men's clothing" onclick={getdata(this)} class="page-item"><a class="page-link">men's clothing</a></li>
+                  <li id="women's clothing" onclick={getdata(this)} class="page-item"><a class="page-link">women's clothing</a></li>
+                </ul>
+              </div>
               <div class="catageryWisePrd">
                 
                 <div class="catageryWisePrd-loader"><img src="../Img/loadrer/Spinner.gif" alt=""></div>
@@ -399,66 +394,6 @@
                 </div> -->
                 
               </div>
-              <!-- <div id="electronics" class="catgery-items position-relative">
-                <img src="https://images.unsplash.com/photo-1595303526913-c7037797ebe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1229&q=80" alt="electronics">
-                <h3 class="catgery-name">electronics</h3>
-                <div class="catgery-showmore">
-                  <p class="text-white m-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat ducimus nulla laboriosam, dolorum maxime soluta vel, harum earum velit impedit pariatur aut hic doloribus ullam ratione necessitatibus. Dolores, accusantium at.</p>
-                  <div class="rating-start">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <button class="mainbtn obs-btn">Show more</button>
-                </div>
-              </div>
-              <div id="jewelery" class="catgery-items position-relative">
-                <img src="https://images.unsplash.com/photo-1665159882377-385d68d2bdff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="jewelery">
-                <h3 class="catgery-name">jewelry</h3>
-                <div class="catgery-showmore">
-                  <p class="text-white m-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat ducimus nulla laboriosam, dolorum maxime soluta vel, harum earum velit impedit pariatur aut hic doloribus ullam ratione necessitatibus. Dolores, accusantium at.</p>
-                  <div class="rating-start">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <button class="mainbtn">Show more</button>
-                </div>
-              </div>
-              <div id="men'sclothing" class="catgery-items position-relative">
-                <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWVucyUyMGZhc2hpb258ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="">
-                <h3 class="catgery-name">men's clothing</h3>
-                <div class="catgery-showmore">
-                  <p class="text-white m-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat ducimus nulla laboriosam, dolorum maxime soluta vel, harum earum velit impedit pariatur aut hic doloribus ullam ratione necessitatibus. Dolores, accusantium at.</p>
-                  <div class="rating-start">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                  </div>
-                  <button class="mainbtn">Show more</button>
-                </div>
-              </div>
-              <div id="women'sclothing" class="catgery-items position-relative">
-                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
-                <h3 class="catgery-name">women's clothing</h3>
-                <div class="catgery-showmore">
-                  <p class="text-white m-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat ducimus nulla laboriosam, dolorum maxime soluta vel, harum earum velit impedit pariatur aut hic doloribus ullam ratione necessitatibus. Dolores, accusantium at.</p>
-                  <div class="rating-start">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <button class="mainbtn">Show more</button>
-                </div>
-              </div> -->
             </div>
          </div>
 
@@ -527,7 +462,9 @@
                   <h4 class="card-title pt-2">Frequently Asked Question</h4>
                   <p class="card-text pt-3">Update On Safe shopping in our stores</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="...">
+                <div class="card-img">
+                  <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="...">
+                </div>
               </div>
             </div>
             <div class="col">
@@ -536,7 +473,9 @@
                   <h4 class="card-title pt-2">Online Payment Process</h4>
                   <p class="card-text pt-3">Update On Safe shopping in our stores.</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="...">
+                <div class="card-img">
+                  <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="...">
+                </div>
               </div>
             </div>
             <div class="col">
@@ -545,7 +484,9 @@
                   <h4 class="card-title pt-2">Home Delivery Options</h4>
                   <p class="card-text pt-3">Update On Safe shopping in our stores.</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1572195577046-2f25894c06fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" class="card-img-top" alt="...">
+                <div class="card-img">
+                  <img src="https://images.unsplash.com/photo-1572195577046-2f25894c06fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" class="card-img-top" alt="...">
+                </div>
               </div>
             </div>            
           </div>
@@ -597,7 +538,7 @@
               </div>
             </div>
           </div>
-          <hr>
+        
           <div class="right-part">
             <div class="right-items">
               <div class="footer-icons">
