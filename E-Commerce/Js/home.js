@@ -51,8 +51,13 @@ var swiper = new Swiper(".mySwiper", {
           $${resuldata.price} <span>$20</span> <span>12% off</span> 
         </div>
       </div>
-      <div class="prd-btn">
-        <button type="button">Add to cart</button>
+      <div id="prd-btn-${resuldata.id}" class="prd-btn">
+        <button onClick={addToCart(this)} id="${resuldata.id}" type="button">Add to cart</button>
+      </div>
+      <div id="prd-btn-addcart-${resuldata.id}" class="prd-btn-addcart">
+        <button onClick={decrimentprd(this)} id="decri-${resuldata.id}" class="decriment"><i class="fa-solid fa-minus"></i></button>
+        <span id="prd-incti-count-${resuldata.id}">0</span>
+        <button onClick={incrimentprd(this)} id="incri-${resuldata.id}" class="inciment"><i class="fa-sharp fa-solid fa-plus"></i></button>
       </div>
     </div>`
     }
@@ -209,3 +214,73 @@ document.getElementById('scrollrightbtn').addEventListener('click',()=>{
   let silder = document.getElementById('prdCAtWise')
   slider.scrollLeft = slider.scrollLeft += 280;
 })
+
+
+
+
+
+// add to cart function
+let productCartInfo = new Map();
+let Totalprd = 0
+function addToCart(e){
+  Totalprd++;
+ //show notication on cart 
+  let cartNotification = document.getElementById('totalNoOfProducts')
+  cartNotification.style.display = 'block'
+  cartNotification.innerText = Totalprd;
+
+  //save in map
+  productCartInfo.set(e.id,1);
+
+  //update prod item
+  document.getElementById(`prd-incti-count-${e.id}`).innerText = '1';
+
+  //hide btn
+  document.getElementById(`prd-btn-${e.id}`).style.display = 'none'
+  //show incree and drement btn
+  document.getElementById(`prd-btn-addcart-${e.id}`).style.display = 'flex'
+
+}
+
+//incriment product items
+function incrimentprd(e){
+  let id = e.id.split('-')[1]
+  let cartNotification = document.getElementById('totalNoOfProducts')
+  if(productCartInfo.has(id)){
+    Totalprd++;
+    let noOfprice = productCartInfo.get(id)
+    let converintoNumber = Number(noOfprice)
+    converintoNumber++
+    productCartInfo.set(id,converintoNumber)
+    cartNotification.innerText = Totalprd;
+
+    document.getElementById(`prd-incti-count-${id}`).innerText = converintoNumber;
+  }
+}
+//decriment product item
+function decrimentprd(e){
+  let id = e.id.split('-')[1]
+  let cartNotification = document.getElementById('totalNoOfProducts')
+  if(productCartInfo.has(id)){
+    Totalprd--;
+    let noOfprice = productCartInfo.get(id)
+    let converintoNumber = Number(noOfprice)
+    converintoNumber--
+    console.log(converintoNumber)
+    if(converintoNumber === 0){
+      document.getElementById(`prd-btn-${id}`).style.display = 'block'
+      document.getElementById(`prd-btn-addcart-${id}`).style.display = 'none'
+      productCartInfo.delete(id)
+    }
+    else{
+      productCartInfo.set(id,converintoNumber)
+    }
+    cartNotification.innerText = Totalprd;
+
+    document.getElementById(`prd-incti-count-${id}`).innerText = converintoNumber;
+  }
+  
+  if(productCartInfo.size === 0){
+    cartNotification.style.display = 'none'
+  }
+}

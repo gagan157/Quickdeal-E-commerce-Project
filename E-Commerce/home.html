@@ -65,18 +65,20 @@
                    
                   </div>
                 </div>
-            </nav>                  
+              </nav>                  
               <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
-              <ul class="navbar-nav mb-2 mb-lg-0 mx-3 nav-ul">
+              <ul class="navbar-nav mb-2 mb-lg-0 mx-3 nav-ul loginpartul">
                   <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-right-to-bracket"></i>
                     Login</a>                      
                   </li>                  
                   <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-cart-shopping mx-1"></i>Cart 
+                    <a class="nav-link" aria-current="page" href="#">
+                      <i class="fa-solid fa-cart-shopping mx-1"></i>
+                      <span id="totalNoOfProducts" class="totalcartitem">0</span> Cart 
                     </a>
                   </li>
               </ul>
@@ -449,6 +451,11 @@
               <div class="prd-btn">
                 <button type="button">Add to cart</button>
               </div>
+              <div class="prd-btn-addcart">
+                <button id="" class="decriment"><i class="fa-solid fa-minus"></i></button>
+                <span id="prd-incti-count">0</span>
+                <button id="" class="inciment"><i class="fa-sharp fa-solid fa-plus"></i></button>
+              </div> 
             </div>             -->
                    
             

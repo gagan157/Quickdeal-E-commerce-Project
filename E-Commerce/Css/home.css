@@ -92,6 +92,25 @@ header{
     height: auto;
     cursor: pointer;
 }
+.navbar .collapse .loginpartul li a{
+    position: relative;
+}
+/* =====Tital No of cartitems==== */
+.navbar .collapse .loginpartul li .totalcartitem{
+   display: none;
+   position: absolute;
+   top: 0;
+   left: 20px;
+   background-color: var(--secondryColor);
+   color: white;
+   border-radius: 50%;
+   padding: 0 .4rem;
+   font-size: .7rem;
+}
+
+.navbar .collapse .loginpartul li a:hover{
+    color: var(--secondryColor);
+}
 /* ===================sub nav======================== */
 header .sub-nav{
     width: 100%;
@@ -773,12 +792,11 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
 .product .catgerygroup nav .pagination .page-item:hover a{
     box-shadow: 0 0 0 5px rgb(25, 135, 84, 25%);        
 }
-/* .product .catgerygroup nav .pagination .page-item .cat-active{
-    box-shadow: 0 0 0 5px rgb(25, 135, 84, 25%);
-} */
+.product .catgerygroup nav .pagination .page-item .cat-active{
+    
+}
 
 
-/* btn============================= */
 .product .catgerygroup .catageryWisePrd{
     margin: 0 auto;
     text-align: center;
@@ -797,6 +815,7 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
     position: relative;
     
 }
+/* btn============================= */
 .product .catgerygroup .catwise-lefrig-btns{
     position: absolute;
     top: 50%;
@@ -1174,6 +1193,38 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
 .prd-group .prd-card .prd-btn button:hover{
     box-shadow: 0 0 0 4px rgb(25, 135, 84, 25%);
 }
+
+/* ----add cart btn in product------ */
+
+.prd-group .prd-card .prd-btn-addcart{
+    padding: 0 0 1rem 1rem;
+    align-self: flex-start;
+    width: 100%;
+    display: none;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
+.prd-group .prd-card .prd-btn-addcart button{
+    border: 2px solid var(--secondryColor);
+    border-radius: 5px;
+    background-color: white;
+    color: var(--textColor);
+    font-weight: 500;
+    padding: .1rem .5rem;
+}
+.prd-group .prd-card .prd-btn-addcart button i{
+    color: var(--secondryColor);
+}
+.prd-group .prd-card .prd-btn-addcart{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.prd-group .prd-card .prd-btn-addcart button:hover{
+    box-shadow: 0 0 0 4px rgb(25, 135, 84, 25%);
+}
+
+
 
 
 /* -------------------------service-------------------- */
