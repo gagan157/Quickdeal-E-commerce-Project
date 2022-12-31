@@ -221,17 +221,16 @@ document.getElementById('scrollrightbtn').addEventListener('click',()=>{
 
 // add to cart function
 let productCartInfo = new Map();
-let Totalprd = 0
+
 function addToCart(e){
-  Totalprd++;
  //show notication on cart 
   let cartNotification = document.getElementById('totalNoOfProducts')
   cartNotification.style.display = 'block'
-  cartNotification.innerText = Totalprd;
-
   //save in map
   productCartInfo.set(e.id,1);
-
+  
+  cartNotification.innerText = productCartInfo.size;
+  
   //update prod item
   document.getElementById(`prd-incti-count-${e.id}`).innerText = '1';
 
@@ -245,14 +244,13 @@ function addToCart(e){
 //incriment product items
 function incrimentprd(e){
   let id = e.id.split('-')[1]
-  let cartNotification = document.getElementById('totalNoOfProducts')
+
   if(productCartInfo.has(id)){
-    Totalprd++;
     let noOfprice = productCartInfo.get(id)
     let converintoNumber = Number(noOfprice)
     converintoNumber++
     productCartInfo.set(id,converintoNumber)
-    cartNotification.innerText = Totalprd;
+    // cartNotification.innerText = Totalprd;
 
     document.getElementById(`prd-incti-count-${id}`).innerText = converintoNumber;
   }
@@ -262,7 +260,6 @@ function decrimentprd(e){
   let id = e.id.split('-')[1]
   let cartNotification = document.getElementById('totalNoOfProducts')
   if(productCartInfo.has(id)){
-    Totalprd--;
     let noOfprice = productCartInfo.get(id)
     let converintoNumber = Number(noOfprice)
     converintoNumber--
@@ -275,7 +272,7 @@ function decrimentprd(e){
     else{
       productCartInfo.set(id,converintoNumber)
     }
-    cartNotification.innerText = Totalprd;
+    cartNotification.innerText = productCartInfo.size
 
     document.getElementById(`prd-incti-count-${id}`).innerText = converintoNumber;
   }
