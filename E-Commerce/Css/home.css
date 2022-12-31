@@ -92,6 +92,9 @@ header{
     height: auto;
     cursor: pointer;
 }
+.navbar .collapse .loginpartul li{
+    cursor: pointer;
+}
 .navbar .collapse .loginpartul li a{
     position: relative;
 }
