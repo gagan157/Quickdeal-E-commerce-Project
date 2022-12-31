@@ -1,4 +1,7 @@
 
+
+
+
 :root{
     --primaryColor : #6610f2;
     --secondryColor:#198754;
@@ -22,6 +25,9 @@
 }
 .postload{
     display: none;
+}
+.main-heading{
+    font-family: 'Roboto', sans-serif;
 }
 /* ========================offcanvas======================= */
 .offcanvas .offcanvas-header{
@@ -701,8 +707,11 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
 } 
 
 /* ................-------------------------cat in spotlight-------------------- */
-
+.product .catgerygroup{
+    position: relative;
+}
 /* =====dropdown==== */
+
 .product .catgerygroup .select-cat-dropdown{
     border: 2px solid var(--secondryColor);
     display: inline-block;
@@ -767,6 +776,9 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
 /* .product .catgerygroup nav .pagination .page-item .cat-active{
     box-shadow: 0 0 0 5px rgb(25, 135, 84, 25%);
 } */
+
+
+/* btn============================= */
 .product .catgerygroup .catageryWisePrd{
     margin: 0 auto;
     text-align: center;
@@ -778,12 +790,14 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
     gap: 30px;
     overflow-x: hidden;    
     scroll-behavior: smooth;
+    scroll-snap-align: center;
     cursor: grab;
     scroll-padding-bottom: 1rem;
     padding: 1rem 0;
     position: relative;
+    
 }
-.product .catgerygroup .catageryWisePrd .catwise-lefrig-btns{
+.product .catgerygroup .catwise-lefrig-btns{
     position: absolute;
     top: 40%;
     display: inline-block;
@@ -793,17 +807,16 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
     border-radius: 50%;
     color: white;
     background-color: rgb(25, 135, 84, 25%);
-    
     z-index: 500;
     cursor: pointer;
     transition: .5s;
 }
-.product .catgerygroup .catageryWisePrd .catwise-lefrig-btns:hover{
+.product .catgerygroup .catwise-lefrig-btns:hover{
     background-color: var(--secondryColor);
     transform: scale(1.1);
     box-shadow: 0 0 0 10px rgb(25, 135, 84, 25%);
 }
-.product .catgerygroup .catageryWisePrd .cateprd-right-btn{
+.product .catgerygroup .cateprd-right-btn{
     right: 0;
 }
 .product .catgerygroup .catageryWisePrd .catageryWisePrd-loader{
@@ -1054,6 +1067,7 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
     align-items: center;
     flex-wrap: wrap;
     gap: 30px;
+    margin-top: 1rem;
 }
 .truncate {
     display: -webkit-box;

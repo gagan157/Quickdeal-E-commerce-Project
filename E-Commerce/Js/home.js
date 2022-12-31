@@ -108,6 +108,7 @@ window.addEventListener('load',fetchOneCategoryData);
 function getdata(e){
   let text = document.getElementById(`${e.id}`).innerText;
   document.getElementById('select-cat-dropdown-chengename').innerText = text;
+  
 
   let categoryWiseUrl = `https://fakestoreapi.com/products/category/${e.id}`
  
@@ -116,7 +117,16 @@ function getdata(e){
   let data = categoryWisedata(categoryWiseUrl)
   Promise.all([data]).then((result)=>{
     divcatwiseprd.innerHTML = ""; 
-    
+      if(result[0].length > 5){
+        //show
+        document.getElementById('scrollrightbtn').style.display = 'block'
+        document.getElementById('scrollleftbtn').style.display = 'block'
+      }
+      else{
+        //hide
+        document.getElementById('scrollrightbtn').style.display = 'none'
+        document.getElementById('scrollleftbtn').style.display = 'none'
+      }
     
     
       result[0].forEach(element => {
@@ -190,4 +200,12 @@ slider.addEventListener('mousemove', (e) => {
 
 
 
-
+//scrolling when click btn
+document.getElementById('scrollleftbtn').addEventListener('click',()=>{
+  let silder = document.getElementById('prdCAtWise')
+  slider.scrollLeft = slider.scrollLeft -= 280;
+})
+document.getElementById('scrollrightbtn').addEventListener('click',()=>{
+  let silder = document.getElementById('prdCAtWise')
+  slider.scrollLeft = slider.scrollLeft += 280;
+})
