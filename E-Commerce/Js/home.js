@@ -228,33 +228,27 @@ slider.addEventListener('mousemove', (e) => {
 
 
 
-
-
 // add to cart function
 let productCartInfo = new Map();
-function cartinlist(){
+
+//get data ane by ane
+async function getdataone(id){
+  let response = await fetch(`https://dummyjson.com/products/${id}`)
+  let data  = await response.json()
+  return data;
+}
+
+function cartinlist(id){
   let cartlist = document.getElementById('cartlist')
+  document.getElementById('emptycart').style.display = 'none'
+  cartlist.style.display = 'block';
   cartlist.innerHTML = `<div class="addcart-prds-title">Order Summary</div>`
-  for(let prod of productCartInfo){
-    let response = fetch(`https://dummyjson.com/products/${prod[0]}`)
-
-
-    cartlist.innerHTML += `<div class="Addcart-prd-card">
-    <div class="Addcart-prd-img">
-      <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="">
-    </div>
-    <div class="Addcart-prd-body">
-      <div class="title">Onion hair oil for hair regrowth and hair fall control 250ml</div>
-      <div class="price">$587 <span>$599</span> <span>2% off</span></div>
-      <div class="btns">
-        <button type="button"><i class="fa-solid fa-minus"></i></button>
-        <span>10</span>
-        <button type="button"><i class="fa-sharp fa-solid fa-plus"></i></button>
-      </div>
-    </div>
-  </div>`
-    console.log(prod[0])
-  }
+  let data = getdataone(id);
+  data.then((result)=>{
+    let cartdataPrd = []
+    cartdataPrd.push(result)
+    console.log(cartdataPrd)
+  })
 }
 
 function addToCart(e){
@@ -263,7 +257,7 @@ function addToCart(e){
   cartNotification.style.display = 'block'
   //save in map
   productCartInfo.set(e.id,1);
-  cartinlist();
+  // cartinlist(e.id);
   cartNotification.innerText = productCartInfo.size;
   
   //update prod item
@@ -293,6 +287,7 @@ function incrimentprd(e){
 //decriment product item
 function decrimentprd(e){
   let id = e.id.split('-')[1]
+
   let cartNotification = document.getElementById('totalNoOfProducts')
   if(productCartInfo.has(id)){
     let noOfprice = productCartInfo.get(id)
@@ -314,5 +309,7 @@ function decrimentprd(e){
   
   if(productCartInfo.size === 0){
     cartNotification.style.display = 'none'
+    document.getElementById('cartlist').style.display = 'none'
+    document.getElementById('emptycart').style.display = 'flex'
   }
 }
