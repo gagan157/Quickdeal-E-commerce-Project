@@ -264,7 +264,10 @@ function cartinlist(id){
    
   })
 }
-let TotalAmount = 0
+let TotalAmount = 0.00
+let GrandTotal = 0.00
+let itemDiscount = 3.00
+let OnlineCardDiscount = 5.35
 function addToCart(e){
  //show notication on cart 
   let cartNotification = document.getElementById('totalNoOfProducts')
@@ -297,6 +300,17 @@ function addToCart(e){
   //show total price
   TotalAmount += Number(ProductInfo.get(e.id).price)
   document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
+
+  //total item dicount 12.00
+  GrandTotal = TotalAmount - itemDiscount
+
+  //29.49    5%  online discount
+  GrandTotal = GrandTotal - OnlineCardDiscount
+  document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
+  document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
+
+  //show price summary
+  document.getElementById('PriceSummary').style.display = 'block'
 }
 
 //incriment product items
@@ -319,6 +333,14 @@ function incrimentprd(e){
     document.getElementById(`prd-card-count-${id}`).innerText = CovTONumProductQuatity;
     TotalAmount += Number(Product.price)
     document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
+
+    //total item dicount 12.00
+    GrandTotal = TotalAmount - itemDiscount
+
+    //29.49    5%  online discount
+    GrandTotal = GrandTotal - OnlineCardDiscount
+    document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
+    document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
   }
 }
 //decriment product item
@@ -341,8 +363,15 @@ function decrimentprd(e){
 
     
     TotalAmount -= Number(Product.price)
-    console.log(Product.price)
     document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
+
+    //total item dicount 12.00
+    GrandTotal = TotalAmount - itemDiscount
+
+    //29.49    5%  online discount
+    GrandTotal = GrandTotal - OnlineCardDiscount
+    document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
+    document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
 
     if(CovTONumProductQuatity === 0){
       document.getElementById(`prd-btn-${id}`).style.display = 'block'
@@ -361,6 +390,7 @@ function decrimentprd(e){
     document.getElementById('cartlist').style.display = 'none'
     document.getElementById('emptycart').style.display = 'flex'
     document.getElementById(`cart-footer`).style.display = 'none'
+    document.getElementById('PriceSummary').style.display = 'none'
     TotalAmount = 0
   }
 }
