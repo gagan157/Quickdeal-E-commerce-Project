@@ -40,7 +40,7 @@ var swiper = new Swiper(".mySwiper", {
     let card = document.getElementsByClassName('prd-group')[0]
     for(let resuldata of result[0]){
       // console.log(resuldata);
-      card.innerHTML += `<div class="prd-card">
+      card.innerHTML += `<div id="allprd-card-${resuldata.id}" class="prd-card">
       <div class="prd-img">
         <img src="${resuldata.thumbnail}">
       </div>
@@ -229,36 +229,60 @@ slider.addEventListener('mousemove', (e) => {
 
 
 // add to cart function
-let productCartInfo = new Map();
-
-//get data ane by ane
+let ProductInfo = new Map();
+//get data ane by one
 async function getdataone(id){
   let response = await fetch(`https://dummyjson.com/products/${id}`)
   let data  = await response.json()
   return data;
 }
 
+let cartdataPrd = []
 function cartinlist(id){
   let cartlist = document.getElementById('cartlist')
   document.getElementById('emptycart').style.display = 'none'
   cartlist.style.display = 'block';
-  cartlist.innerHTML = `<div class="addcart-prds-title">Order Summary</div>`
+  // cartlist.innerHTML = `<div class="addcart-prds-title">Order Summary</div>`
   let data = getdataone(id);
   data.then((result)=>{
-    let cartdataPrd = []
     cartdataPrd.push(result)
-    console.log(cartdataPrd)
+   
+      cartlist.innerHTML += `<div id="cart-prd-${result.id}" class="Addcart-prd-card">
+      <div class="Addcart-prd-img">
+        <img src="${result.thumbnail}" alt="">
+      </div>
+      <div class="Addcart-prd-body">
+        <div class="title">${result.title}</div>
+        <div class="price">$${result.price} <span>$599</span> <span>${result.discountPercentage}% off</span></div>
+        <div class="btns">
+          <button onClick={decrimentprd(this)} id="decri-${result.id}" type="button"><i class="fa-solid fa-minus"></i></button>
+          <span id="prd-card-count-${result.id}">1</span>
+          <button onClick={incrimentprd(this)} id="incri-${result.id}" type="button"><i class="fa-sharp fa-solid fa-plus"></i></button>
+        </div>
+      </div>
+    </div>`
+   
   })
 }
-
+let TotalAmount = 0
 function addToCart(e){
  //show notication on cart 
   let cartNotification = document.getElementById('totalNoOfProducts')
   cartNotification.style.display = 'block'
-  //save in map
-  productCartInfo.set(e.id,1);
-  // cartinlist(e.id);
-  cartNotification.innerText = productCartInfo.size;
+
+  let prdCard = document.getElementById(`allprd-card-${e.id}`)
+  let title = prdCard.children[1].children[0].children[0].innerText
+  let catgorey = prdCard.children[1].children[1].innerText
+  let rating = prdCard.children[1].children[2].children[5].innerText
+  let allprice = prdCard.children[1].children[3].innerText
+  let price = allprice.split(' ')[0].split('$')[1]
+  let discount = allprice.split(' ')[2].split('%')[0]
+  let img = prdCard.children[0].children[0].getAttribute('src')
+  let count = 1;
+  ProductInfo.set(e.id,{'id':e.id,'title':title,'category':catgorey,'rating':rating,'price':price,'discount':discount,'img':img,'count':count})
+  
+  cartinlist(e.id);
+  cartNotification.innerText = ProductInfo.size;
   
   //update prod item
   document.getElementById(`prd-incti-count-${e.id}`).innerText = '1';
@@ -267,21 +291,34 @@ function addToCart(e){
   document.getElementById(`prd-btn-${e.id}`).style.display = 'none'
   //show incree and drement btn
   document.getElementById(`prd-btn-addcart-${e.id}`).style.display = 'flex'
+  document.getElementById(`cart-footer`).style.display = 'flex'
 
+
+  //show total price
+  TotalAmount += Number(ProductInfo.get(e.id).price)
+  document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
 }
 
 //incriment product items
 function incrimentprd(e){
   let id = e.id.split('-')[1]
 
-  if(productCartInfo.has(id)){
-    let noOfprice = productCartInfo.get(id)
-    let converintoNumber = Number(noOfprice)
-    converintoNumber++
-    productCartInfo.set(id,converintoNumber)
-    // cartNotification.innerText = Totalprd;
+  if(ProductInfo.has(id)){
+    
+    let Product = ProductInfo.get(id)
+    let ProductQuatity = Product.count;
+    let CovTONumProductQuatity = Number(ProductQuatity)
+    CovTONumProductQuatity++;
+    Product['count'] = CovTONumProductQuatity
+    
+    
+    ProductInfo.set(id,Product)
+   
 
-    document.getElementById(`prd-incti-count-${id}`).innerText = converintoNumber;
+    document.getElementById(`prd-incti-count-${id}`).innerText = CovTONumProductQuatity;
+    document.getElementById(`prd-card-count-${id}`).innerText = CovTONumProductQuatity;
+    TotalAmount += Number(Product.price)
+    document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
   }
 }
 //decriment product item
@@ -289,27 +326,41 @@ function decrimentprd(e){
   let id = e.id.split('-')[1]
 
   let cartNotification = document.getElementById('totalNoOfProducts')
-  if(productCartInfo.has(id)){
-    let noOfprice = productCartInfo.get(id)
-    let converintoNumber = Number(noOfprice)
-    converintoNumber--
-  
-    if(converintoNumber === 0){
+  if(ProductInfo.has(id)){
+    let Product = ProductInfo.get(id)
+    let ProductQuatity = Product.count;
+    let CovTONumProductQuatity = Number(ProductQuatity)
+    CovTONumProductQuatity--;
+    Product['count'] = CovTONumProductQuatity
+
+
+    
+    
+    document.getElementById(`prd-incti-count-${id}`).innerText = CovTONumProductQuatity;
+    document.getElementById(`prd-card-count-${id}`).innerText = CovTONumProductQuatity;
+
+    
+    TotalAmount -= Number(Product.price)
+    console.log(Product.price)
+    document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
+
+    if(CovTONumProductQuatity === 0){
       document.getElementById(`prd-btn-${id}`).style.display = 'block'
       document.getElementById(`prd-btn-addcart-${id}`).style.display = 'none'
-      productCartInfo.delete(id)
+      document.getElementById(`cart-prd-${id}`).remove();
+      ProductInfo.delete(id)
     }
     else{
-      productCartInfo.set(id,converintoNumber)
+      ProductInfo.set(id,Product)
     }
-    cartNotification.innerText = productCartInfo.size
-
-    document.getElementById(`prd-incti-count-${id}`).innerText = converintoNumber;
+    cartNotification.innerText = ProductInfo.size    
   }
   
-  if(productCartInfo.size === 0){
+  if(ProductInfo.size === 0){
     cartNotification.style.display = 'none'
     document.getElementById('cartlist').style.display = 'none'
     document.getElementById('emptycart').style.display = 'flex'
+    document.getElementById(`cart-footer`).style.display = 'none'
+    TotalAmount = 0
   }
 }

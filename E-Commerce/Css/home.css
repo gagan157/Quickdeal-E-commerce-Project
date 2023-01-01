@@ -82,7 +82,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 140px;
+    height: 110px;
     gap: 10px;
 }
 .offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-img{
@@ -147,6 +147,39 @@
 .offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-body .btns button:hover
 {
     box-shadow: 0 0 0 4px rgb(25, 135, 84, 25%);
+}
+
+
+/* //cart-footer */
+.offcanvas .offcanvas-footer{
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: .7rem;
+}
+.offcanvas .offcanvas-footer a{
+    text-decoration: none;
+    color: var(--secondryColor);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.offcanvas .offcanvas-footer a:hover{
+    color: var(--textColor);
+}
+.offcanvas .offcanvas-footer button{
+    border: none;
+    background-color: var(--secondryColor);
+    color: white;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: .5rem 1rem;
+    text-transform: uppercase;
+}
+.offcanvas .offcanvas-footer button:hover{
+    background-color: var(--textColor);
 }
 
 /* =================================nav================================== */
