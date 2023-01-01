@@ -19,20 +19,30 @@ var swiper = new Swiper(".mySwiper", {
 
 
   //featch all prd
-  let url = 'https://fakestoreapi.com/products'
+  let url = 'https://dummyjson.com/products'
   let fetchproducts = async function(url){
-    let responce = await fetch(url)
+    let responce = await fetch(url,{
+      method: 'GET',
+      headers: {
+        "Content-type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+      }
+
+    })
     let data = await responce.json()
-    return data;
+    // console.log(data.products)
+    return data.products;
   }
   let data = fetchproducts(url);
   Promise.all([data]).then((result)=>{
+    // console.log(result[0])
     let card = document.getElementsByClassName('prd-group')[0]
     for(let resuldata of result[0]){
       // console.log(resuldata);
       card.innerHTML += `<div class="prd-card">
       <div class="prd-img">
-        <img src="${resuldata.image}">
+        <img src="${resuldata.thumbnail}">
       </div>
       <div class="prd-body">
         <div class="prd-titles">
@@ -45,10 +55,10 @@ var swiper = new Swiper(".mySwiper", {
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span> <span>(${resuldata.rating.rate})</span>
+          <span class="fa fa-star"></span> <span>(${resuldata.rating})</span>
         </div>
         <div class="prd-price">
-          $${resuldata.price} <span>$20</span> <span>12% off</span> 
+          $${resuldata.price} <span>$20</span> <span>${resuldata.discountPercentage}% off</span> 
         </div>
       </div>
       <div id="prd-btn-${resuldata.id}" class="prd-btn">
@@ -66,13 +76,13 @@ var swiper = new Swiper(".mySwiper", {
 
 //fech data one category
 async function fetchOneCategoryData(){
-  let response = await fetch('https://fakestoreapi.com/products/category/electronics')
+  let response = await fetch('https://dummyjson.com/products/category/mens-watches')
   let data = await response.json();
-
+  // console.log(data)
   if(response){
     document.getElementsByClassName('catageryWisePrd-loader')[0].style.display = "none"
   }  
-  Show(data);  
+  Show(data.products);  
 }  
 function Show(data){
 
@@ -80,7 +90,7 @@ function Show(data){
   for(let da of data){
     divcatwiseprd.innerHTML += `<div class="catwise-card">
     <div class="catwise-card-img">
-    <img src="${da.image}" alt="">
+    <img src="${da.thumbnail}" alt="">
     </div>
     <div class="catwise-card-body">
     <div class="price">$${da.price} <span>$5.24</span></div>
@@ -90,7 +100,7 @@ function Show(data){
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span> <span>(${da.rating.rate})</span>
+    <span class="fa fa-star"></span> <span>(${da.rating})</span>
     </div>
     <div class="categey">
     ${da.category}
@@ -115,29 +125,30 @@ function getdata(e){
   document.getElementById('select-cat-dropdown-chengename').innerText = text;
   
 
-  let categoryWiseUrl = `https://fakestoreapi.com/products/category/${e.id}`
+  let categoryWiseUrl = `https://dummyjson.com/products/category/${e.id}`
  
   let divcatwiseprd = document.getElementsByClassName('catageryWisePrd')[0]
   divcatwiseprd.innerHTML = ` <div class="catageryWisePrd-loader"><img src="./Img/loadrer/Spinner.gif" alt=""></div>`;
   let data = categoryWisedata(categoryWiseUrl)
   Promise.all([data]).then((result)=>{
+    console.log(result)
     divcatwiseprd.innerHTML = ""; 
       if(result[0].length > 5){
         //show
-        document.getElementById('scrollrightbtn').style.display = 'block'
-        document.getElementById('scrollleftbtn').style.display = 'block'
+        // document.getElementById('scrollrightbtn').style.display = 'block'
+        // document.getElementById('scrollleftbtn').style.display = 'block'
       }
       else{
         //hide
-        document.getElementById('scrollrightbtn').style.display = 'none'
-        document.getElementById('scrollleftbtn').style.display = 'none'
+        // document.getElementById('scrollrightbtn').style.display = 'none'
+        // document.getElementById('scrollleftbtn').style.display = 'none'
       }
     
     
       result[0].forEach(element => {
         divcatwiseprd.innerHTML += `<div class="catwise-card">
         <div class="catwise-card-img">
-          <img src="${element.image}" alt="">
+          <img src="${element.thumbnail}" alt="">
         </div>
         <div class="catwise-card-body">
           <div class="price">$${element.price} <span>$5.24</span></div>
@@ -147,7 +158,7 @@ function getdata(e){
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span> <span>(${element.rating.rate})</span>
+            <span class="fa fa-star"></span> <span>(${element.rating})</span>
           </div>
           <div class="categey">
             ${element.category}
@@ -166,7 +177,7 @@ function getdata(e){
 async function categoryWisedata(url){
   let response = await fetch(url);
   let data = await response.json()
-  return data;  
+  return data.products;  
 }
 
 
@@ -206,14 +217,14 @@ slider.addEventListener('mousemove', (e) => {
 
 
 //scrolling when click btn
-document.getElementById('scrollleftbtn').addEventListener('click',()=>{
-  let silder = document.getElementById('prdCAtWise')
-  slider.scrollLeft = slider.scrollLeft -= 280;
-})
-document.getElementById('scrollrightbtn').addEventListener('click',()=>{
-  let silder = document.getElementById('prdCAtWise')
-  slider.scrollLeft = slider.scrollLeft += 280;
-})
+// document.getElementById('scrollleftbtn').addEventListener('click',()=>{
+//   let silder = document.getElementById('prdCAtWise')
+//   slider.scrollLeft = slider.scrollLeft -= 280;
+// })
+// document.getElementById('scrollrightbtn').addEventListener('click',()=>{
+//   let silder = document.getElementById('prdCAtWise')
+//   slider.scrollLeft = slider.scrollLeft += 280;
+// })
 
 
 
@@ -221,6 +232,30 @@ document.getElementById('scrollrightbtn').addEventListener('click',()=>{
 
 // add to cart function
 let productCartInfo = new Map();
+function cartinlist(){
+  let cartlist = document.getElementById('cartlist')
+  cartlist.innerHTML = `<div class="addcart-prds-title">Order Summary</div>`
+  for(let prod of productCartInfo){
+    let response = fetch(`https://dummyjson.com/products/${prod[0]}`)
+
+
+    cartlist.innerHTML += `<div class="Addcart-prd-card">
+    <div class="Addcart-prd-img">
+      <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="">
+    </div>
+    <div class="Addcart-prd-body">
+      <div class="title">Onion hair oil for hair regrowth and hair fall control 250ml</div>
+      <div class="price">$587 <span>$599</span> <span>2% off</span></div>
+      <div class="btns">
+        <button type="button"><i class="fa-solid fa-minus"></i></button>
+        <span>10</span>
+        <button type="button"><i class="fa-sharp fa-solid fa-plus"></i></button>
+      </div>
+    </div>
+  </div>`
+    console.log(prod[0])
+  }
+}
 
 function addToCart(e){
  //show notication on cart 
@@ -228,7 +263,7 @@ function addToCart(e){
   cartNotification.style.display = 'block'
   //save in map
   productCartInfo.set(e.id,1);
-  
+  cartinlist();
   cartNotification.innerText = productCartInfo.size;
   
   //update prod item
@@ -263,7 +298,7 @@ function decrimentprd(e){
     let noOfprice = productCartInfo.get(id)
     let converintoNumber = Number(noOfprice)
     converintoNumber--
-    console.log(converintoNumber)
+  
     if(converintoNumber === 0){
       document.getElementById(`prd-btn-${id}`).style.display = 'block'
       document.getElementById(`prd-btn-addcart-${id}`).style.display = 'none'

@@ -59,8 +59,94 @@
     font-weight: 500; 
 }
 
-
-
+/* //cart prd */
+.offcanvas .offcanvas-body{
+    background-color: rgb(245, 245, 245);
+    padding: 1rem 0!important;
+}
+.offcanvas .offcanvas-body .addcart-prds{
+    width: 100%;
+    padding: 0 1rem;
+    background-color: white;
+    min-height: fit-content;
+}
+.offcanvas .offcanvas-body .addcart-prds .addcart-prds-title{
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-top: 1rem;
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 140px;
+    gap: 10px;
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-img{
+    flex: 20%; 
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-body{
+    flex: 80%;
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-img img{
+    max-width: 100%;
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    border: 1px solid rgb(63, 63, 63);
+    border-radius: 5px;
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-body .title{
+    font-size: 1rem;
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-body .price{
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding-top: .3rem;
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-body .price :first-child{
+    color: lightgray;
+    text-decoration: line-through;
+    font-size: .9rem;
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-body .price :last-child{
+    background-color: #136740;
+    color: white;
+    padding: .1rem .5rem;
+    font-size: .9rem;
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-body .btns{
+    align-self: flex-end;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-body .btns button{
+    border: 2px solid var(--secondryColor);
+    border-radius: 5px;
+    background-color: white;
+    color: var(--textColor);
+    font-weight: 500;
+    padding: .1rem .4rem;
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-body .btns span{
+    font-size: 1.2rem;
+}
+.offcanvas .offcanvas-body .addcart-prds .Addcart-prd-card .Addcart-prd-body .btns button:hover
+{
+    box-shadow: 0 0 0 4px rgb(25, 135, 84, 25%);
+}
 
 /* =================================nav================================== */
 header{
