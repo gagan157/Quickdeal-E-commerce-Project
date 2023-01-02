@@ -258,15 +258,15 @@ slider.addEventListener('mousemove', (e) => {
 
 
 
-//scrolling when click btn
-// document.getElementById('scrollleftbtn').addEventListener('click',()=>{
-//   let silder = document.getElementById('prdCAtWise')
-//   slider.scrollLeft = slider.scrollLeft -= 280;
-// })
-// document.getElementById('scrollrightbtn').addEventListener('click',()=>{
-//   let silder = document.getElementById('prdCAtWise')
-//   slider.scrollLeft = slider.scrollLeft += 280;
-// })
+// scrolling when click btn
+document.getElementById('scrollleftbtn').addEventListener('click',()=>{
+  let silder = document.getElementById('prdCAtWise')
+  slider.scrollLeft = slider.scrollLeft -= 280;
+})
+document.getElementById('scrollrightbtn').addEventListener('click',()=>{
+  let silder = document.getElementById('prdCAtWise')
+  slider.scrollLeft = slider.scrollLeft += 280;
+})
 
 
 

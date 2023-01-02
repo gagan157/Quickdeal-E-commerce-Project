@@ -2093,7 +2093,7 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
         padding: 0 1rem!important;
     }
  }
- @media only screen and (max-width:522px){
+ @media only screen and (max-width:600px){
     .product .catgerygroup .select-cat-dropdown{
         display: flex;
     }
@@ -2101,6 +2101,12 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
         display: none;
     }
  }
+
+@media only screen and (max-width:1458px) {
+    .product .catgerygroup .catwise-lefrig-btns{
+        display: block!important;
+    }
+}
 
 
  /* ============two ban===================
