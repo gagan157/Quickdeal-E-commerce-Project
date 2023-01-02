@@ -17,11 +17,11 @@ var swiper = new Swiper(".mySwiper", {
     },
   });
 
-
+let AllProducts = []
   //featch all prd
   let url = 'https://dummyjson.com/products'
-  let fetchproducts = async function(url){
-    let responce = await fetch(url,{
+  let fetchproducts = async function(url,limit,skip){
+    let responce = await fetch(`${url}/?limit=${limit}&skip=${skip}`,{
       method: 'GET',
       headers: {
         "Content-type": "application/json;charset=UTF-8",
@@ -30,15 +30,16 @@ var swiper = new Swiper(".mySwiper", {
       }
 
     })
+    
     let data = await responce.json()
-    // console.log(data.products)
-    return data.products;
-  }
-  let data = fetchproducts(url);
-  Promise.all([data]).then((result)=>{
-    // console.log(result[0])
-    let card = document.getElementsByClassName('prd-group')[0]
-    for(let resuldata of result[0]){
+    
+    if(data){
+      AllProducts.push(...data.products);
+      let card = document.getElementsByClassName('prd-group')[0]
+      document.getElementById('Product-loader').style.display = 'none'
+      document.getElementById('loadmorebtn').style.display = 'block'
+      card.innerHTML = ''
+    for(let resuldata of AllProducts){
       // console.log(resuldata);
       card.innerHTML += `<div id="allprd-card-${resuldata.id}" class="prd-card">
       <div class="prd-img">
@@ -71,7 +72,31 @@ var swiper = new Swiper(".mySwiper", {
       </div>
     </div>`
     }
-  })
+    }
+    
+  // return data.products;
+
+  }
+  let limitdata = 30;
+  let skip = 0 
+  fetchproducts(url,limitdata,skip)
+
+  //loadmore data
+  let oneTimeskip = 20
+  function loadMoreProduct(){
+    if(skip < 90){
+      limitdata = 10
+      skip += oneTimeskip + limitdata
+      oneTimeskip = 0 
+      document.getElementById('Product-loader').style.display = 'block'
+      document.getElementById('loadmorebtn').style.display = 'none'     
+      fetchproducts(url,limitdata,skip);    
+    }
+    else{
+      document.getElementById('loadmorebtn').style.display = 'none' 
+      document.getElementById('Product-loader').style.display = 'none'   
+    }
+  }
 
 
 //fech data one category
