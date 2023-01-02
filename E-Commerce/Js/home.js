@@ -18,6 +18,9 @@ var swiper = new Swiper(".mySwiper", {
   });
 
 let AllProducts = []
+// add to cart function
+let ProductInfo = new Map();
+
   //featch all prd
   let url = 'https://dummyjson.com/products'
   let fetchproducts = async function(url,limit,skip){
@@ -61,7 +64,7 @@ let AllProducts = []
         <div class="prd-price">
           $${resuldata.price} <span>$20</span> <span>${resuldata.discountPercentage}% off</span> 
         </div>
-      </div>
+      </div>     
       <div id="prd-btn-${resuldata.id}" class="prd-btn">
         <button onClick={addToCart(this)} id="${resuldata.id}" type="button">Add to cart</button>
       </div>
@@ -71,12 +74,26 @@ let AllProducts = []
         <button onClick={incrimentprd(this)} id="incri-${resuldata.id}" class="inciment"><i class="fa-sharp fa-solid fa-plus"></i></button>
       </div>
     </div>`
+
+    if(ProductInfo.size > 0){
+      if(ProductInfo.has(String(resuldata.id))){
+        
+        //hide btn
+        document.getElementById(`prd-btn-${resuldata.id}`).style.display = 'none'
+        
+        //show quautity prd 
+        document.getElementById(`prd-incti-count-${resuldata.id}`).innerText = ProductInfo.get(String(resuldata.id)).count
+
+        //show incree and drement btn
+        document.getElementById(`prd-btn-addcart-${resuldata.id}`).style.display = 'flex'
+      }
+    }    
     }
     }
-    
-  // return data.products;
 
   }
+
+
   let limitdata = 30;
   let skip = 0 
   fetchproducts(url,limitdata,skip)
@@ -90,7 +107,7 @@ let AllProducts = []
       oneTimeskip = 0 
       document.getElementById('Product-loader').style.display = 'block'
       document.getElementById('loadmorebtn').style.display = 'none'     
-      fetchproducts(url,limitdata,skip);    
+      fetchproducts(url,limitdata,skip);
     }
     else{
       document.getElementById('loadmorebtn').style.display = 'none' 
@@ -253,9 +270,8 @@ slider.addEventListener('mousemove', (e) => {
 
 
 
-// add to cart function
-let ProductInfo = new Map();
-//get data ane by one
+
+//get data categorywise ane by one
 async function getdataone(id){
   let response = await fetch(`https://dummyjson.com/products/${id}`)
   let data  = await response.json()
