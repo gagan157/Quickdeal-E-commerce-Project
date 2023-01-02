@@ -13,7 +13,7 @@
     align-items: center;
 }
 .contain .component .component-imgs{
-    flex: 60%;
+    flex: 40%;
     height: 100%;
 }
 .contain .component .component-details{
@@ -72,6 +72,10 @@
     min-height: fit-content;
     font-size: 1.5rem;
     font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
 }
 .contain .component .component-detail .com-title{
     font-weight: 600;
@@ -89,6 +93,93 @@
 .contain .component .component-detail .com-rating-stars{
      font-size: .6em;
 }
-.contain .component .component-detail .com-rating-stars .checked{
+.contain .component .component-detail .com-rating-stars :last-child{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.contain .component .component-detail .com-decription{
+    font-size: .9em;
+}
+.contain .component .component-detail .paynow{
+    font-size: .6em;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: rgb(90, 90, 90);
+}
+.contain .component .component-detail .com-prices{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 25px;
+    
+}
+.contain .component .component-detail .com-prices> :first-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.contain .component .component-detail .com-prices> :first-child :last-child{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+.contain .component .component-detail .com-prices> :first-child :last-child .com-price{
+    font-size: 1.3em;
+    color: green;
+}
+.contain .component .component-detail .com-prices> :first-child :last-child .com-discut{
+    font-size: 1em;
+    color: #8888;
+    text-decoration: line-through;
+}
+.contain .component .component-detail .com-prices .com-dis{
+    font-size: .8em;
+}
+.contain .component .component-detail .com-stock{
+    font-size: 1em;
+    font-weight: 500;
+}
+.contain .component .component-detail .com-stock span{
+    font-size: .7em;
+    color: green;
+}
+.contain .component .component-detail .com-btns{
+    font-size: .8em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: .8rem;
+}
+.contain .component .component-detail .com-btns .com-bothbtn{
+    border:  none;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    padding: .6rem 0;
+    width: 100%;
+}
 
+.contain .component .component-detail .com-btns .comquantityChangebtn{
+    width: 100%;
+    /* display: flex; */
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.contain .component .component-detail .com-btns .comquantityChangebtn .com-count{
+    font-size: 1.3em;
+    font-weight: 500;
+}
+.contain .component .component-detail .com-btns .comquantityChangebtn .con-incri-dicri{
+    cursor: pointer;
+    background-color: green;
+    padding: .7rem .7rem;
+    color: white;
 }
