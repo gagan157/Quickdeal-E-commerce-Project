@@ -19,7 +19,10 @@ var swiper = new Swiper(".mySwiper", {
 
 let AllProducts = []
 // add to cart function
-let ProductInfo = new Map();
+let itemDiscount = 3.00
+let OnlineCardDiscount = 5.35
+let TotalAmount = 0.00
+let GrandTotal = 0.00
 
   //featch all prd
   let url = 'https://dummyjson.com/products'
@@ -74,21 +77,38 @@ let ProductInfo = new Map();
         <button onClick={incrimentprd(this)} id="incri-${resuldata.id}" class="inciment"><i class="fa-sharp fa-solid fa-plus"></i></button>
       </div>
     </div>`
-
-    if(ProductInfo.size > 0){
-      if(ProductInfo.has(String(resuldata.id))){
-        
-        //hide btn
-        document.getElementById(`prd-btn-${resuldata.id}`).style.display = 'none'
-        
-        //show quautity prd 
-        document.getElementById(`prd-incti-count-${resuldata.id}`).innerText = ProductInfo.get(String(resuldata.id)).count
-
-        //show incree and drement btn
-        document.getElementById(`prd-btn-addcart-${resuldata.id}`).style.display = 'flex'
-      }
-    }    
+  
     }
+    if(localStorage.getItem('cart') ){
+      let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')))
+      
+      //show notification 
+      let cartNotification = document.getElementById('totalNoOfProducts')
+      cartNotification.style.display = 'block'
+      cartNotification.innerText = dataInfo.size 
+      
+      //price summary show
+      document.getElementById(`cart-footer`).style.display = 'flex'
+      document.getElementById('PriceSummary').style.display = 'block'
+     
+      for(let data of dataInfo){      
+        cartinlist(data[0])
+        TotalAmount += Number(dataInfo.get(data[0]).price) * Number(dataInfo.get(data[0]).count)
+
+        //hide btn
+        document.getElementById(`prd-btn-${data[0]}`).style.display = 'none'
+        //show incree and drement btn
+        document.getElementById(`prd-btn-addcart-${data[0]}`).style.display = 'flex'
+        
+        //show count
+        document.getElementById(`prd-incti-count-${data[0]}`).innerText = dataInfo.get(data[0]).count
+        // document.getElementById(`prd-card-count-${data[0]}`).innerText = dataInfo.get(data[0]).count;
+      }
+      document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
+      GrandTotal = TotalAmount - itemDiscount - OnlineCardDiscount
+      document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
+      document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
+    }    
     }
 
   }
@@ -280,6 +300,7 @@ async function getdataone(id){
 
 let cartdataPrd = []
 function cartinlist(id){
+  let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')))
   let cartlist = document.getElementById('cartlist')
   document.getElementById('emptycart').style.display = 'none'
   cartlist.style.display = 'block';
@@ -297,7 +318,7 @@ function cartinlist(id){
         <div class="price">$${result.price} <span>$599</span> <span>${result.discountPercentage}% off</span></div>
         <div class="btns">
           <button onClick={decrimentprd(this)} id="decri-${result.id}" type="button"><i class="fa-solid fa-minus"></i></button>
-          <span id="prd-card-count-${result.id}">1</span>
+          <span id="prd-card-count-${result.id}">${dataInfo.get(`${result.id}`).count}</span>
           <button onClick={incrimentprd(this)} id="incri-${result.id}" type="button"><i class="fa-sharp fa-solid fa-plus"></i></button>
         </div>
       </div>
@@ -305,10 +326,16 @@ function cartinlist(id){
    
   })
 }
-let TotalAmount = 0.00
-let GrandTotal = 0.00
-let itemDiscount = 3.00
-let OnlineCardDiscount = 5.35
+
+
+
+
+
+
+//click add to cart
+
+
+
 function addToCart(e){
  //show notication on cart 
   let cartNotification = document.getElementById('totalNoOfProducts')
@@ -323,10 +350,23 @@ function addToCart(e){
   let discount = allprice.split(' ')[2].split('%')[0]
   let img = prdCard.children[0].children[0].getAttribute('src')
   let count = 1;
-  ProductInfo.set(e.id,{'id':e.id,'title':title,'category':catgorey,'rating':rating,'price':price,'discount':discount,'img':img,'count':count})
+
+  //add local storage
+  // localStorage.setItem("cart", JSON.stringify(Array.from(ProductInfo.entries())))
+  if(!localStorage.getItem('cart')){
+    let datainfo = new Map()
+    datainfo.set(e.id,{'id':e.id,'title':title,'category':catgorey,'rating':rating,'price':price,'discount':discount,'img':img,'count':count})
+    localStorage.setItem('cart', JSON.stringify(Array.from(datainfo.entries())))
+  }
+  else{
+    let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')))
+    dataInfo.set(e.id,{'id':e.id,'title':title,'category':catgorey,'rating':rating,'price':price,'discount':discount,'img':img,'count':count})    
+    localStorage.setItem('cart', JSON.stringify(Array.from(dataInfo.entries())))
+  }
   
+  let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')))
   cartinlist(e.id);
-  cartNotification.innerText = ProductInfo.size;
+  cartNotification.innerText = dataInfo.size;
   
   //update prod item
   document.getElementById(`prd-incti-count-${e.id}`).innerText = '1';
@@ -339,7 +379,7 @@ function addToCart(e){
 
 
   //show total price
-  TotalAmount += Number(ProductInfo.get(e.id).price)
+  TotalAmount += Number(dataInfo.get(e.id).price)
   document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
 
   //total item dicount 12.00
@@ -358,21 +398,20 @@ function addToCart(e){
 function incrimentprd(e){
   let id = e.id.split('-')[1]
 
-  if(ProductInfo.has(id)){
-    
-    let Product = ProductInfo.get(id)
-    let ProductQuatity = Product.count;
-    let CovTONumProductQuatity = Number(ProductQuatity)
-    CovTONumProductQuatity++;
-    Product['count'] = CovTONumProductQuatity
-    
-    
-    ProductInfo.set(id,Product)
-   
+  if(localStorage.getItem('cart')){
+    //get info in localstoragae
+    let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')));
+    let data = dataInfo.get(id);
+    let dataquautity = data.count;
+    let convToNum = Number(dataquautity)
+    convToNum++;
+    data['count'] = convToNum
 
-    document.getElementById(`prd-incti-count-${id}`).innerText = CovTONumProductQuatity;
-    document.getElementById(`prd-card-count-${id}`).innerText = CovTONumProductQuatity;
-    TotalAmount += Number(Product.price)
+    localStorage.setItem("cart", JSON.stringify(Array.from(dataInfo.entries())))
+    
+    document.getElementById(`prd-incti-count-${id}`).innerText = convToNum;
+    document.getElementById(`prd-card-count-${id}`).innerText = convToNum;
+    TotalAmount += Number(data.price)
     document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
 
     //total item dicount 12.00
@@ -389,21 +428,20 @@ function decrimentprd(e){
   let id = e.id.split('-')[1]
 
   let cartNotification = document.getElementById('totalNoOfProducts')
-  if(ProductInfo.has(id)){
-    let Product = ProductInfo.get(id)
-    let ProductQuatity = Product.count;
-    let CovTONumProductQuatity = Number(ProductQuatity)
-    CovTONumProductQuatity--;
-    Product['count'] = CovTONumProductQuatity
-
+  let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')));
+  if(localStorage.getItem('cart')){
+    //get info in localstoragae
+    let data = dataInfo.get(id);
+    let dataquautity = data.count;
+    let convToNum = Number(dataquautity)
+    convToNum--;
+    data['count'] = convToNum
+    
+    document.getElementById(`prd-incti-count-${id}`).innerText = convToNum;
+    document.getElementById(`prd-card-count-${id}`).innerText = convToNum;
 
     
-    
-    document.getElementById(`prd-incti-count-${id}`).innerText = CovTONumProductQuatity;
-    document.getElementById(`prd-card-count-${id}`).innerText = CovTONumProductQuatity;
-
-    
-    TotalAmount -= Number(Product.price)
+    TotalAmount -= Number(data.price)
     document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
 
     //total item dicount 12.00
@@ -414,19 +452,21 @@ function decrimentprd(e){
     document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
     document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
 
-    if(CovTONumProductQuatity === 0){
+    if(convToNum === 0){
       document.getElementById(`prd-btn-${id}`).style.display = 'block'
       document.getElementById(`prd-btn-addcart-${id}`).style.display = 'none'
       document.getElementById(`cart-prd-${id}`).remove();
-      ProductInfo.delete(id)
+      dataInfo.delete(id)
+      localStorage.setItem("cart", JSON.stringify(Array.from(dataInfo.entries())))
     }
     else{
-      ProductInfo.set(id,Product)
+      localStorage.setItem("cart", JSON.stringify(Array.from(dataInfo.entries())))
     }
-    cartNotification.innerText = ProductInfo.size    
+    cartNotification.innerText = dataInfo.size    
   }
   
-  if(ProductInfo.size === 0){
+  if(dataInfo.size === 0){
+    localStorage.removeItem('cart')
     cartNotification.style.display = 'none'
     document.getElementById('cartlist').style.display = 'none'
     document.getElementById('emptycart').style.display = 'flex'
