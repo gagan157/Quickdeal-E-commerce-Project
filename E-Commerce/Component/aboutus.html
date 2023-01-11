@@ -15,15 +15,15 @@
     </head>
 <body>
       <div id="preloader"></div>
-      <header id="header" class="postload">
+      <header id="header" class="postload">     
+        <!-- =====cart item====================== -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-            <div class="offcanvas-body-item">
-              
+            <div id="emptycart" class="offcanvas-body-item">            
               <div class="offcanvas-body-item-img">
                 <img src="../Img/cart/online-shopping (1).png" alt="">
               </div>
@@ -34,13 +34,62 @@
                 It's a good day to buy the items you saved for later
               </div>
             </div>
+            <div id="cartlist" class="addcart-prds">
+               <div class="addcart-prds-title">Order Summary</div>
+             <!-- <div class="Addcart-prd-card">
+                <div class="Addcart-prd-img">
+                  <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="">
+                </div>
+                <div class="Addcart-prd-body">
+                  <div class="title">Onion hair oil for hair regrowth and hair fall control 250ml</div>
+                  <div class="price">$587 <span>$599</span> <span>2% off</span></div>
+                  <div class="btns">
+                    <button type="button"><i class="fa-solid fa-minus"></i></button>
+                    <span>10</span>
+                    <button type="button"><i class="fa-sharp fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </div>             -->
+            </div>
+            <div id="PriceSummary" class="price-Summary">
+              <div class="price-Summary-title">Price Summary</div>
+              <div class="price-Summary-item">
+                <div>Order Total</div>
+                <div id="TotalAmount">$599.00</div>
+              </div>
+              <div class="price-Summary-item">
+                <div>Items Discount</div>
+                <div id="discountPrice">-$3.00</div>
+              </div>
+              <div class="price-Summary-item">
+                <div>Shipping</div>
+                <div>
+                  <div>$100</div>
+                  <span>Free</span>
+                </div>
+              </div>
+              <div class="price-Summary-item">
+                <div>5% online payment discount</div>
+                <div id="discountOnline">-$5.35</div>
+              </div>
+              <div class="price-Summary-item">
+                <div>Grand Total</div>
+                <div id="GrandTotal">$557.65</div>
+              </div>
+            </div>
+          </div>
+          <div id="cart-footer" class="offcanvas-footer">
+            <div>
+              <h5 id="OverAllTotal" class="totalAmount"></h5>
+              <a href="#PriceSummary">View details</a>
+            </div>
+            <button type="button">continue</button>
           </div>
         </div>
         <nav class="navbar navbar-expand-lg mt-2">
             <div class="container-fluid nav-1">                
-              
               <a href="../home.html">
-                <img class="d-inline-block logoimg" src="../Img/Quickdeal-Logo.PNG" alt="logo"></a>
+              <img class="d-inline-block logoimg" src="../Img/Quickdeal-Logo.PNG" alt="logo"></a>
               
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -48,35 +97,24 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <nav class="navbar navbar-expand-lg">
                   <div class="container-fluid">                
-                    
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-ul">
                         <li class="nav-item">
-                          <a class="nav-link " aria-current="page" href="../home.html">Home</a>
+                          <a class="nav-link" aria-current="page" href="../home.html">Home</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link active" href="../Component/aboutus.html">About</a>
                         </li>
-                        <!-- <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Category
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                          </ul>
-                        </li> -->
+                    
                         <li class="nav-item">
                           <a class="nav-link" href="../Component/contactUs.html">Contact us</a>
                         </li>
                       </ul>
                       
-                    
+                     
                     </div>
                   </div>
-              </nav>                  
+                </nav>                  
                 <form class="d-flex" role="search">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Search</button>
@@ -95,68 +133,12 @@
                 </ul>
               </div>
             </div>
-        </nav>  
-
-        <!-- <nav id="nav-cat" class="sub-nav">
-          <ul type="none" class="navsub-list-items">
-            <li class="navsub-list-item">
-              <div class="sub-nav-item">
-                <img src="../Img/NavCat/perspective_matte-51-128x128.png" alt="" srcset="">
-                <a href="#">Mobiles <i class="fa-solid fa-caret-down"></i></a>
-              </div>
-              <div class="sub-nav-dropdown" type="none">
-                <ul type="none" class="sub-nav-dropdown-item">
-                  <li class="brand">Explore</li>
-                  <li>New Lanches</li>
-                  <li>Best Sellers</li>
-                  <li>Combos</li>
-                  <li>Gift Pack</li>
-                </ul>
-                <div class="vertical-line">
-                  
-                </div>          
-                <ul type="none" class="sub-nav-dropdown-item">
-                  <li class="brand">Brands</li>
-                  <li>Samsung</li>
-                  <li>Apple</li>
-                  <li>Huawei</li>
-                  <li>Nokia</li>
-                  <li>Sony</li>
-                  <li>LG</li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <div class="sub-nav-item">
-                <img src="../Img/NavCat/Clothes-128x128.png" alt="" srcset="">
-                <a href="#">Fashion</a>
-                </div>
-              </li>
-            <li>
-              <div class="sub-nav-item">
-                <img src="../Img/NavCat/perspective_matte-132-128x128.png" alt="" srcset="">
-                <a href="#">Electronics</a>
-                </div></li>
-            <li>
-              <div class="sub-nav-item">
-                <img src="../Img/NavCat/perspective_matte-150-128x128.png" alt="" srcset="">
-                <a href="#">Beauty</a>
-                </div></li>
-            <li>
-              <div class="sub-nav-item">
-                <img src="../Img/NavCat/perspective_matte-499-128x128.png" alt="" srcset="">
-                <a href="#">Toys</a>
-                </div>
-              </li>
-            <li>
-              <div class="sub-nav-item">
-                <img src="../Img/NavCat/perspective_matte-57-128x128.png" alt="" srcset="">
-                <a href="#">Appliances</a>
-                </div>
-              </li>
-          </ul>
-        </nav>  -->
+        </nav> 
+  
+        
       </header>
+
+
     <div class="postload container-fluid">
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

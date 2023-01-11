@@ -1,6 +1,5 @@
 
 
-
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 6,
     spaceBetween: 30,
@@ -17,6 +16,8 @@ var swiper = new Swiper(".mySwiper", {
     },
   });
 
+
+let dataLoad = false;  
 let AllProducts = []
 // add to cart function
 let itemDiscount = 3.00
@@ -40,6 +41,7 @@ let GrandTotal = 0.00
     let data = await responce.json()
     
     if(data){
+      dataLoad = true;
       AllProducts.push(...data.products);
       let card = document.getElementsByClassName('prd-group')[0]
       document.getElementById('Product-loader').style.display = 'none'
@@ -78,8 +80,10 @@ let GrandTotal = 0.00
       </div>
     </div>`
   
-    }
-    if(localStorage.getItem('cart') ){
+    }  
+    
+
+    if(dataLoad && localStorage.getItem('cart')){
       let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')))
       
       //show notification 
@@ -90,28 +94,34 @@ let GrandTotal = 0.00
       //price summary show
       document.getElementById(`cart-footer`).style.display = 'flex'
       document.getElementById('PriceSummary').style.display = 'block'
-     
-      for(let data of dataInfo){      
-        cartinlist(data[0])
-        TotalAmount += Number(dataInfo.get(data[0]).price) * Number(dataInfo.get(data[0]).count)
-
-        //hide btn
-        document.getElementById(`prd-btn-${data[0]}`).style.display = 'none'
-        //show incree and drement btn
-        document.getElementById(`prd-btn-addcart-${data[0]}`).style.display = 'flex'
-        
-        //show count
-        document.getElementById(`prd-incti-count-${data[0]}`).innerText = dataInfo.get(data[0]).count
-        // document.getElementById(`prd-card-count-${data[0]}`).innerText = dataInfo.get(data[0]).count;
-      }
+      TotalAmount = 0.00;
+      GrandTotal = 0.00;
+        for(let data of dataInfo){     
+          cartinlist(data[0])
+          TotalAmount += Number(dataInfo.get(data[0]).price) * Number(dataInfo.get(data[0]).count)
+          
+          //hide btn
+          document.getElementById(`prd-btn-${data[0]}`).style.display = 'none'
+          //show incree and drement btn
+          document.getElementById(`prd-btn-addcart-${data[0]}`).style.display = 'flex'
+          
+          //show count
+          document.getElementById(`prd-incti-count-${data[0]}`).innerText = dataInfo.get(data[0]).count
+          // document.getElementById(`prd-card-count-${data[0]}`).innerText = dataInfo.get(data[0]).count;
+        }
+      
       document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
       GrandTotal = TotalAmount - itemDiscount - OnlineCardDiscount
       document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
       document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
-    }    
+    } 
+
     }
 
   }
+
+  
+  
 
 
   let limitdata = 30;
@@ -126,7 +136,8 @@ let GrandTotal = 0.00
       skip += oneTimeskip + limitdata
       oneTimeskip = 0 
       document.getElementById('Product-loader').style.display = 'block'
-      document.getElementById('loadmorebtn').style.display = 'none'     
+      document.getElementById('loadmorebtn').style.display = 'none'  
+      document.getElementById('cartlist').innerHTML = ''   
       fetchproducts(url,limitdata,skip);
     }
     else{
@@ -291,7 +302,7 @@ document.getElementById('scrollrightbtn').addEventListener('click',()=>{
 
 
 
-//get data categorywise ane by one
+// get data categorywise one by one
 async function getdataone(id){
   let response = await fetch(`https://dummyjson.com/products/${id}`)
   let data  = await response.json()
@@ -307,8 +318,7 @@ function cartinlist(id){
   // cartlist.innerHTML = `<div class="addcart-prds-title">Order Summary</div>`
   let data = getdataone(id);
   data.then((result)=>{
-    cartdataPrd.push(result)
-   
+    cartdataPrd.push(result)   
       cartlist.innerHTML += `<div id="cart-prd-${result.id}" class="Addcart-prd-card">
       <div class="Addcart-prd-img">
         <img src="${result.thumbnail}" alt="">
@@ -331,11 +341,7 @@ function cartinlist(id){
 
 
 
-
 //click add to cart
-
-
-
 function addToCart(e){
  //show notication on cart 
   let cartNotification = document.getElementById('totalNoOfProducts')

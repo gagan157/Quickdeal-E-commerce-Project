@@ -1,3 +1,6 @@
+
+
+
 var preloader = document.getElementById('preloader');
 // var postload = document.getElementById('postload');
 var classpostload = document.getElementsByClassName('postload')
@@ -54,3 +57,8 @@ window.addEventListener('scroll',()=>{
   //   rightban.style.opacity = "0"
   // }
 })
+
+
+
+
+
