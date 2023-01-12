@@ -58,7 +58,169 @@ window.addEventListener('scroll',()=>{
   // }
 })
 
+let itemDiscount = 3.00
+let OnlineCardDiscount = 5.35
+let TotalAmount = 0.00
+let GrandTotal = 0.00
+
+if(localStorage.getItem('cart')){
+  let CartItem = JSON.parse(localStorage.getItem('cart'))
+  let cartCount = document.getElementById('totalNoOfProducts')
+  cartCount.innerText = CartItem.length
+  cartCount.style.display = 'block'
+  document.getElementById(`cart-footer`).style.display = 'flex'
+  document.getElementById('PriceSummary').style.display = 'block'
+  
+  for(let [key,val] of CartItem){
+    // console.log(val)
+    cartinlist(key)
+    TotalAmount += Number(val.price) * Number(val.count)
+          
+    //hide btn
+    let maincardbtn = document.getElementById(`prd-btn-${key}`)
+    if(maincardbtn){
+      maincardbtn.style.display = 'none'
+    }
+    //show incree and drement btn
+    let prdcartbtn = document.getElementById(`prd-btn-addcart-${key}`)
+    if(prdcartbtn){
+      prdcartbtn.style.display = 'flex'
+    }
+    
+    //show count
+    // document.getElementById(`prd-incti-count-${key}`).innerText = dataInfo.get(data[0]).count
+  }
+      document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
+      GrandTotal = TotalAmount - itemDiscount - OnlineCardDiscount
+      document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
+      document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
+}
+async function getdataone(id){
+  let response = await fetch(`https://dummyjson.com/products/${id}`)
+  let data  = await response.json()
+  return data;
+}
 
 
+let cartdataPrd = []
+function cartinlist(id){
+  let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')))
+  let cartlist = document.getElementById('cartlist')
+  document.getElementById('emptycart').style.display = 'none'
+  cartlist.style.display = 'block';
+  // cartlist.innerHTML = `<div class="addcart-prds-title">Order Summary</div>`
+  let data = getdataone(id);
+  data.then((result)=>{
+    cartdataPrd.push(result)   
+      cartlist.innerHTML += `<div id="cart-prd-${result.id}" class="Addcart-prd-card">
+      <div class="Addcart-prd-img">
+        <img src="${result.thumbnail}" alt="">
+      </div>
+      <div class="Addcart-prd-body">
+        <div class="title">${result.title}</div>
+        <div class="price">$${result.price} <span>$599</span> <span>${result.discountPercentage}% off</span></div>
+        <div class="btns">
+          <button onClick={decrimentprd(this)} id="decri-${result.id}" type="button"><i class="fa-solid fa-minus"></i></button>
+          <span id="prd-card-count-${result.id}">${dataInfo.get(`${result.id}`).count}</span>
+          <button onClick={incrimentprd(this)} id="incri-${result.id}" type="button"><i class="fa-sharp fa-solid fa-plus"></i></button>
+        </div>
+      </div>
+    </div>`
+   
+  })
+}
 
 
+//incriment product items
+function incrimentprd(e){
+  let id = e.id.split('-')[1]
+
+  if(localStorage.getItem('cart')){
+    //get info in localstoragae
+    let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')));
+    let data = dataInfo.get(id);
+    let dataquautity = data.count;
+    let convToNum = Number(dataquautity)
+    convToNum++;
+    data['count'] = convToNum
+
+    localStorage.setItem("cart", JSON.stringify(Array.from(dataInfo.entries())))
+    
+    let maincard = document.getElementById(`prd-incti-count-${id}`)
+    if(maincard){
+      maincard.innerText = convToNum;
+    }
+    document.getElementById(`prd-card-count-${id}`).innerText = convToNum;
+    TotalAmount += Number(data.price)
+    document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
+
+    //total item dicount 12.00
+    GrandTotal = TotalAmount - itemDiscount
+
+    //29.49    5%  online discount
+    GrandTotal = GrandTotal - OnlineCardDiscount
+    document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
+    document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
+  }
+}
+//decriment product item
+function decrimentprd(e){
+  let id = e.id.split('-')[1]
+
+  let cartNotification = document.getElementById('totalNoOfProducts')
+  let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')));
+  if(localStorage.getItem('cart')){
+    //get info in localstoragae
+    let data = dataInfo.get(id);
+    let dataquautity = data.count;
+    let convToNum = Number(dataquautity)
+    convToNum--;
+    data['count'] = convToNum
+    
+    let maincard = document.getElementById(`prd-incti-count-${id}`)
+    if(maincard){
+      maincard.innerText = convToNum;
+    }
+    document.getElementById(`prd-card-count-${id}`).innerText = convToNum;
+
+    
+    TotalAmount -= Number(data.price)
+    document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
+
+    //total item dicount 12.00
+    GrandTotal = TotalAmount - itemDiscount
+
+    //29.49    5%  online discount
+    GrandTotal = GrandTotal - OnlineCardDiscount
+    document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
+    document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
+
+    if(convToNum === 0){
+      let prdBtn = document.getElementById(`prd-btn-${id}`)
+      if(prdBtn){
+        prdBtn.style.display = 'block'
+      }
+      let prdbtnCart = document.getElementById(`prd-btn-addcart-${id}`)
+      if(prdbtnCart){
+        prdbtnCart.style.display = 'none';
+      }
+      document.getElementById(`cart-prd-${id}`).remove();
+      dataInfo.delete(id)
+      localStorage.setItem("cart", JSON.stringify(Array.from(dataInfo.entries())))
+    }
+    else{
+      localStorage.setItem("cart", JSON.stringify(Array.from(dataInfo.entries())))
+    }
+    cartNotification.innerText = dataInfo.size    
+  }
+  
+  if(dataInfo.size === 0){
+    localStorage.removeItem('cart')
+    cartNotification.style.display = 'none'
+    document.getElementById('cartlist').style.display = 'none'
+    document.getElementById('emptycart').style.display = 'flex'
+    document.getElementById(`cart-footer`).style.display = 'none'
+    document.getElementById('PriceSummary').style.display = 'none'
+    TotalAmount = 0
+  }
+}

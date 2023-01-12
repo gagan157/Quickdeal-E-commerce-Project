@@ -20,10 +20,10 @@ var swiper = new Swiper(".mySwiper", {
 let dataLoad = false;  
 let AllProducts = []
 // add to cart function
-let itemDiscount = 3.00
-let OnlineCardDiscount = 5.35
-let TotalAmount = 0.00
-let GrandTotal = 0.00
+// let itemDiscount = 3.00
+// let OnlineCardDiscount = 5.35
+// let TotalAmount = 0.00
+// let GrandTotal = 0.00
 
   //featch all prd
   let url = 'https://dummyjson.com/products'
@@ -97,7 +97,7 @@ let GrandTotal = 0.00
       TotalAmount = 0.00;
       GrandTotal = 0.00;
         for(let data of dataInfo){     
-          cartinlist(data[0])
+          // cartinlist(data[0])
           TotalAmount += Number(dataInfo.get(data[0]).price) * Number(dataInfo.get(data[0]).count)
           
           //hide btn
@@ -137,7 +137,7 @@ let GrandTotal = 0.00
       oneTimeskip = 0 
       document.getElementById('Product-loader').style.display = 'block'
       document.getElementById('loadmorebtn').style.display = 'none'  
-      document.getElementById('cartlist').innerHTML = ''   
+      // document.getElementById('cartlist').innerHTML = ''   
       fetchproducts(url,limitdata,skip);
     }
     else{
@@ -303,39 +303,39 @@ document.getElementById('scrollrightbtn').addEventListener('click',()=>{
 
 
 // get data categorywise one by one
-async function getdataone(id){
-  let response = await fetch(`https://dummyjson.com/products/${id}`)
-  let data  = await response.json()
-  return data;
-}
+// async function getdataone(id){
+//   let response = await fetch(`https://dummyjson.com/products/${id}`)
+//   let data  = await response.json()
+//   return data;
+// }
 
-let cartdataPrd = []
-function cartinlist(id){
-  let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')))
-  let cartlist = document.getElementById('cartlist')
-  document.getElementById('emptycart').style.display = 'none'
-  cartlist.style.display = 'block';
-  // cartlist.innerHTML = `<div class="addcart-prds-title">Order Summary</div>`
-  let data = getdataone(id);
-  data.then((result)=>{
-    cartdataPrd.push(result)   
-      cartlist.innerHTML += `<div id="cart-prd-${result.id}" class="Addcart-prd-card">
-      <div class="Addcart-prd-img">
-        <img src="${result.thumbnail}" alt="">
-      </div>
-      <div class="Addcart-prd-body">
-        <div class="title">${result.title}</div>
-        <div class="price">$${result.price} <span>$599</span> <span>${result.discountPercentage}% off</span></div>
-        <div class="btns">
-          <button onClick={decrimentprd(this)} id="decri-${result.id}" type="button"><i class="fa-solid fa-minus"></i></button>
-          <span id="prd-card-count-${result.id}">${dataInfo.get(`${result.id}`).count}</span>
-          <button onClick={incrimentprd(this)} id="incri-${result.id}" type="button"><i class="fa-sharp fa-solid fa-plus"></i></button>
-        </div>
-      </div>
-    </div>`
+// let cartdataPrd = []
+// function cartinlist(id){
+//   let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')))
+//   let cartlist = document.getElementById('cartlist')
+//   document.getElementById('emptycart').style.display = 'none'
+//   cartlist.style.display = 'block';
+//   // cartlist.innerHTML = `<div class="addcart-prds-title">Order Summary</div>`
+//   let data = getdataone(id);
+//   data.then((result)=>{
+//     cartdataPrd.push(result)   
+//       cartlist.innerHTML += `<div id="cart-prd-${result.id}" class="Addcart-prd-card">
+//       <div class="Addcart-prd-img">
+//         <img src="${result.thumbnail}" alt="">
+//       </div>
+//       <div class="Addcart-prd-body">
+//         <div class="title">${result.title}</div>
+//         <div class="price">$${result.price} <span>$599</span> <span>${result.discountPercentage}% off</span></div>
+//         <div class="btns">
+//           <button onClick={decrimentprd(this)} id="decri-${result.id}" type="button"><i class="fa-solid fa-minus"></i></button>
+//           <span id="prd-card-count-${result.id}">${dataInfo.get(`${result.id}`).count}</span>
+//           <button onClick={incrimentprd(this)} id="incri-${result.id}" type="button"><i class="fa-sharp fa-solid fa-plus"></i></button>
+//         </div>
+//       </div>
+//     </div>`
    
-  })
-}
+//   })
+// }
 
 
 
@@ -400,84 +400,84 @@ function addToCart(e){
   document.getElementById('PriceSummary').style.display = 'block'
 }
 
-//incriment product items
-function incrimentprd(e){
-  let id = e.id.split('-')[1]
+// //incriment product items
+// function incrimentprd(e){
+//   let id = e.id.split('-')[1]
 
-  if(localStorage.getItem('cart')){
-    //get info in localstoragae
-    let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')));
-    let data = dataInfo.get(id);
-    let dataquautity = data.count;
-    let convToNum = Number(dataquautity)
-    convToNum++;
-    data['count'] = convToNum
+//   if(localStorage.getItem('cart')){
+//     //get info in localstoragae
+//     let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')));
+//     let data = dataInfo.get(id);
+//     let dataquautity = data.count;
+//     let convToNum = Number(dataquautity)
+//     convToNum++;
+//     data['count'] = convToNum
 
-    localStorage.setItem("cart", JSON.stringify(Array.from(dataInfo.entries())))
+//     localStorage.setItem("cart", JSON.stringify(Array.from(dataInfo.entries())))
     
-    document.getElementById(`prd-incti-count-${id}`).innerText = convToNum;
-    document.getElementById(`prd-card-count-${id}`).innerText = convToNum;
-    TotalAmount += Number(data.price)
-    document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
+//     document.getElementById(`prd-incti-count-${id}`).innerText = convToNum;
+//     document.getElementById(`prd-card-count-${id}`).innerText = convToNum;
+//     TotalAmount += Number(data.price)
+//     document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
 
-    //total item dicount 12.00
-    GrandTotal = TotalAmount - itemDiscount
+//     //total item dicount 12.00
+//     GrandTotal = TotalAmount - itemDiscount
 
-    //29.49    5%  online discount
-    GrandTotal = GrandTotal - OnlineCardDiscount
-    document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
-    document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
-  }
-}
-//decriment product item
-function decrimentprd(e){
-  let id = e.id.split('-')[1]
+//     //29.49    5%  online discount
+//     GrandTotal = GrandTotal - OnlineCardDiscount
+//     document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
+//     document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
+//   }
+// }
+// //decriment product item
+// function decrimentprd(e){
+//   let id = e.id.split('-')[1]
 
-  let cartNotification = document.getElementById('totalNoOfProducts')
-  let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')));
-  if(localStorage.getItem('cart')){
-    //get info in localstoragae
-    let data = dataInfo.get(id);
-    let dataquautity = data.count;
-    let convToNum = Number(dataquautity)
-    convToNum--;
-    data['count'] = convToNum
+//   let cartNotification = document.getElementById('totalNoOfProducts')
+//   let dataInfo = new Map(JSON.parse(localStorage.getItem('cart')));
+//   if(localStorage.getItem('cart')){
+//     //get info in localstoragae
+//     let data = dataInfo.get(id);
+//     let dataquautity = data.count;
+//     let convToNum = Number(dataquautity)
+//     convToNum--;
+//     data['count'] = convToNum
     
-    document.getElementById(`prd-incti-count-${id}`).innerText = convToNum;
-    document.getElementById(`prd-card-count-${id}`).innerText = convToNum;
+//     document.getElementById(`prd-incti-count-${id}`).innerText = convToNum;
+//     document.getElementById(`prd-card-count-${id}`).innerText = convToNum;
 
     
-    TotalAmount -= Number(data.price)
-    document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
+//     TotalAmount -= Number(data.price)
+//     document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
 
-    //total item dicount 12.00
-    GrandTotal = TotalAmount - itemDiscount
+//     //total item dicount 12.00
+//     GrandTotal = TotalAmount - itemDiscount
 
-    //29.49    5%  online discount
-    GrandTotal = GrandTotal - OnlineCardDiscount
-    document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
-    document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
+//     //29.49    5%  online discount
+//     GrandTotal = GrandTotal - OnlineCardDiscount
+//     document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
+//     document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
 
-    if(convToNum === 0){
-      document.getElementById(`prd-btn-${id}`).style.display = 'block'
-      document.getElementById(`prd-btn-addcart-${id}`).style.display = 'none'
-      document.getElementById(`cart-prd-${id}`).remove();
-      dataInfo.delete(id)
-      localStorage.setItem("cart", JSON.stringify(Array.from(dataInfo.entries())))
-    }
-    else{
-      localStorage.setItem("cart", JSON.stringify(Array.from(dataInfo.entries())))
-    }
-    cartNotification.innerText = dataInfo.size    
-  }
+//     if(convToNum === 0){
+//       document.getElementById(`prd-btn-${id}`).style.display = 'block'
+//       document.getElementById(`prd-btn-addcart-${id}`).style.display = 'none'
+//       document.getElementById(`cart-prd-${id}`).remove();
+//       dataInfo.delete(id)
+//       localStorage.setItem("cart", JSON.stringify(Array.from(dataInfo.entries())))
+//     }
+//     else{
+//       localStorage.setItem("cart", JSON.stringify(Array.from(dataInfo.entries())))
+//     }
+//     cartNotification.innerText = dataInfo.size    
+//   }
   
-  if(dataInfo.size === 0){
-    localStorage.removeItem('cart')
-    cartNotification.style.display = 'none'
-    document.getElementById('cartlist').style.display = 'none'
-    document.getElementById('emptycart').style.display = 'flex'
-    document.getElementById(`cart-footer`).style.display = 'none'
-    document.getElementById('PriceSummary').style.display = 'none'
-    TotalAmount = 0
-  }
-}
+//   if(dataInfo.size === 0){
+//     localStorage.removeItem('cart')
+//     cartNotification.style.display = 'none'
+//     document.getElementById('cartlist').style.display = 'none'
+//     document.getElementById('emptycart').style.display = 'flex'
+//     document.getElementById(`cart-footer`).style.display = 'none'
+//     document.getElementById('PriceSummary').style.display = 'none'
+//     TotalAmount = 0
+//   }
+// }
