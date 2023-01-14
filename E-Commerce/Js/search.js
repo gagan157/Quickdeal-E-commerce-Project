@@ -5,12 +5,15 @@ let searchingProduct = '';
 window.addEventListener('load',()=>{
     let q = window.location.href.split('&')[1].split('=')[1]
     searchingProduct = q;
-    fetch(`https://dummyjson.com/products/search?q=${q}`)
+    fetch(`https://dummyjson.com/products?limit=100`)
     .then(response=>response.json())
     .then((result)=>
         {
-            searchData.push(...result.products)
-            filterData.push(...result.products)            
+            let newfilterdata = result.products.filter((data)=>{               
+                return data.brand.toLowerCase().indexOf(`${q.toLowerCase()}`) !== -1 || data.category.toLowerCase().indexOf(`${q.toLowerCase()}`) !== -1 || data.title.toLowerCase().indexOf(`${q.toLowerCase()}`) !== -1               
+            })           
+            searchData.push(...newfilterdata)
+            filterData.push(...newfilterdata)            
             displayFilterProducts(searchData,q)
         })
 })
@@ -21,7 +24,7 @@ function displayFilterProducts(result,q){
     serchprd.innerHTML = `<div id="" class="grid-product-heading"> 
         <div id='showingTotal'></div>
         <div class='filter'>
-            <div id="filter-head" class='filter-head'>sort by: featured <span class='filter-head-arrow'>></span></div>
+            <div id="filter-head" class='filter-head'>sort by: featured <i class="fa-solid fa-caret-down"></i></div>
             <div class='filter-option'>
                 <ul>
                     <li onClick={filterLowToHigh()}>Price: Low to High</li>

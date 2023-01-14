@@ -52,8 +52,8 @@ img{
     visibility: visible;
     opacity: 1;
 }
-.grid-item-products .grid-product-heading .filter .filter-head .filter-head-arrow{
-    transform: rotate(80deg);
+.grid-item-products .grid-product-heading .filter:hover .filter-head i{
+    transform: rotate(180deg);
 }
 .grid-item-products .grid-product-heading .filter .filter-option{
     position: absolute;
