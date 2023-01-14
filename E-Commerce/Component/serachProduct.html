@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quickdeal-search</title>
+        <link rel="icon" type="image/x-icon" href="../Img/favicon.PNG">
+        <link rel="stylesheet" href="../Css/home.css">       
+        <link rel="stylesheet" href="../Css/search.css">       
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- <div id="preloader"></div> -->
+    <header id="header">     
+        <!-- =====cart item====================== -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <div id="emptycart" class="offcanvas-body-item">            
+              <div class="offcanvas-body-item-img">
+                <img src="../Img/cart/online-shopping (1).png" alt="">
+              </div>
+              <div class="offcanvas-body-item-title">
+                Your Cart is empty !
+              </div>
+              <div class="offcanvas-body-item-dec">
+                It's a good day to buy the items you saved for later
+              </div>
+            </div>
+            <div id="cartlist" class="addcart-prds">
+               <div class="addcart-prds-title">Order Summary</div>
+             <!-- <div class="Addcart-prd-card">
+                <div class="Addcart-prd-img">
+                  <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="">
+                </div>
+                <div class="Addcart-prd-body">
+                  <div class="title">Onion hair oil for hair regrowth and hair fall control 250ml</div>
+                  <div class="price">$587 <span>$599</span> <span>2% off</span></div>
+                  <div class="btns">
+                    <button type="button"><i class="fa-solid fa-minus"></i></button>
+                    <span>10</span>
+                    <button type="button"><i class="fa-sharp fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </div>             -->
+            </div>
+            <div id="PriceSummary" class="price-Summary">
+              <div class="price-Summary-title">Price Summary</div>
+              <div class="price-Summary-item">
+                <div>Order Total</div>
+                <div id="TotalAmount">$599.00</div>
+              </div>
+              <div class="price-Summary-item">
+                <div>Items Discount</div>
+                <div id="discountPrice">-$3.00</div>
+              </div>
+              <div class="price-Summary-item">
+                <div>Shipping</div>
+                <div>
+                  <div>$100</div>
+                  <span>Free</span>
+                </div>
+              </div>
+              <div class="price-Summary-item">
+                <div>5% online payment discount</div>
+                <div id="discountOnline">-$5.35</div>
+              </div>
+              <div class="price-Summary-item">
+                <div>Grand Total</div>
+                <div id="GrandTotal">$557.65</div>
+              </div>
+            </div>
+          </div>
+          <div id="cart-footer" class="offcanvas-footer">
+            <div>
+              <h5 id="OverAllTotal" class="totalAmount"></h5>
+              <a href="#PriceSummary">View details</a>
+            </div>
+            <button type="button">continue</button>
+          </div>
+        </div>
+        <nav class="navbar navbar-expand-lg mt-2">
+            <div class="container-fluid nav-1">                
+              <a href="../home.html">
+              <img class="d-inline-block logoimg" src="../Img/Quickdeal-Logo.PNG" alt="logo"></a>
+              
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <nav class="navbar navbar-expand-lg">
+                  <div class="container-fluid">                
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-ul">
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="../home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="../Component/aboutus.html">About</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                          <a class="nav-link" href="../Component/contactUs.html">Contact us</a>
+                        </li>
+                      </ul>
+                      
+                     
+                    </div>
+                  </div>
+                </nav>                  
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav mb-2 mb-lg-0 mx-3 nav-ul loginpartul">
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-right-to-bracket"></i>
+                      Login</a>                      
+                    </li>                  
+                    <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                      <a class="nav-link" aria-current="page">
+                        <i class="fa-solid fa-cart-shopping mx-1"></i>
+                        <span id="totalNoOfProducts" class="totalcartitem">0</span> Cart 
+                      </a>
+                    </li>
+                </ul>
+              </div>
+            </div>
+        </nav> 
+  
+        
+    </header>
+
+    <!-- //show products -->
+    <div class="grid">
+        <div class="grid-item-filter">
+            <div class="filter">
+              <div>Filter</div>
+              <div></div>
+            </div>    
+            <div class="price">
+              <div class="price-range">
+                <h6>Price</h6>
+                <input type="range" id="priceRange" name="priceRange" min="0" max="5000" value="10">
+                <span id="pricerangeVal">0</span>
+              </div>
+              <div class="priceMinAndMax">
+                <div class="pricemin">
+                  <Select onchange="{filminormaxprice()}" id="price-min">
+                    <option value="">Min</option>
+                    <option value="10">$10</option>
+                    <option value="50">$50</option>
+                    <option value="100">$100</option>
+                    <option value="150">$150</option>
+                  </Select>
+                </div>
+                <div>to</div>
+                <div class="pricemax">
+                  <Select onchange="{filminormaxprice()}" id="price-max">               
+                    <option value="500">$500</option>
+                    <option value="1000">$1000</option>
+                    <option value="2000">$2000</option>
+                    <option value="3000">$3000</option>
+                    <option value="4000">$4000</option>
+                    <option value="5000">$5000</option>
+                  </Select>
+                </div>
+              </div>
+            </div>        
+        </div>
+        <div id="search-prd" class="grid-item-products">
+            <!-- <div id="showingTotal" class="grid-product-heading"></div> -->
+           
+            <!-- <div class="serch-card">
+                <div class="serch-img">
+                    <img src="https://images.unsplash.com/photo-1622533950960-2ed47209dab0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1209&q=80" alt="">
+                </div>
+                <div class="serch-body">
+                    <div class="serch-body-title">Redmi K50i 5G (Phantom Blue, 6GB RAM, 128GB Storage) | Flagship Mediatek Dimensity 8100 Processor | 144Hz Liquid FFS Display</div>
+                    <div class="serch-body-starRating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span>(4.2)</span>
+                    </div>
+                    <div class="serch-body-limited">
+                        Limted time deal
+                    </div>
+                    <div class="serch-body-prices">
+                        <span>23,999</span>
+                        <sub>31,999</sub>
+                        <span>(25% off)</span>
+                    </div>
+                    <p>Save extra with No Cost EMI</p>
+                    <div class="serch-body-divivery-time">
+                        Get it as soon as <span>Tomorrow 6AM - 10AM</span>
+                    </div>
+                    <div class="serch-body-dilivery-free">
+                        Free Delivery by Quickdeal
+                    </div>
+                </div>
+            </div> -->
+            
+        </div>
+    </div>
+
+
+
+
+    <div class="postload whatsapp-icons">
+        <i class="fa-brands fa-whatsapp"></i>
+    </div> 
+      <footer>
+        <section class="main-footer-section px-5">
+          <div class="mid-part">
+            <div class="mid-items">
+              <form class="" action="" method="post">
+                <div class="newletter">Newsletter</div>
+                <div class="form-newsletter position-relative">  
+                  <input type="email" id="foot-email" name="foot-email" placeholder="abc@example.com">
+                  <button class="" type="button"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+              </form>
+              <div class="foot-list">
+                <div class="foot-list-item">
+                  <h4>Menu</h4>
+                  <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact us</a></li>                     
+                  </ul>
+                </div>
+                <div class="foot-list-item">
+                  <h4>Category</h4>
+                  <ul>                      
+                    <li><a href="#">Men Clothes</a></li>
+                    <li><a href="#">Women Clothes</a></li>
+                    <li><a href="#">Tech</a></li>                      
+                    <li><a href="#">Shoes</a></li>                      
+                  </ul>
+                </div>
+                <div class="foot-list-item">
+                  <h4>Products</h4>
+                  <ul>
+                    <li><a href="#">Samsung Tab</a></li>
+                    <li><a href="#">Asus Laptop</a></li>
+                    <li><a href="#">Xiomi Mobile</a></li>
+                    <li><a href="#">Realme Tv</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="right-part">
+            <div class="right-items">
+              <div class="footer-icons">
+                <i class="fa-brands fa-facebook social-icon"></i>
+                <i class="fa-brands fa-github social-icon"></i>
+                <i class="fa-brands fa-twitter social-icon"></i>
+                <i class="fa-brands fa-square-instagram social-icon"></i>
+                <i class="fa-brands fa-youtube social-icon"></i>
+                <i class="fa-brands fa-linkedin social-icon"></i>
+                <i class="fa-brands fa-google social-icon"></i>
+              </div>
+              <!-- <div class="footer-icon-app">
+                <h5><i class="fa-brands fa-apple app-icon"></i> IOS app</h5>
+                <h5><i class="fa-brands fa-android app-icon"></i> Android app</h5>                
+              </div> -->
+            </div>
+          </div>
+        </section>
+        <section class="copyright-sec-footer">
+            <h3><span>&#169;</span>2022 Copyright: Quickdeal.com</h3>
+        </section>
+      </footer>
+
+
+    <script src="../Js/custom.js"></script>
+    <script src="../Js/search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>

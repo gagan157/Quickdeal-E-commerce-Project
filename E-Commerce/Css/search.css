@@ -1,0 +1,165 @@
+.grid{
+    display: grid;
+    grid-template-areas:
+    'filters products products products';
+    grid-template-columns: 350px 1fr;
+    min-height: 50vh;
+    background-color: rgb(240, 240, 240);
+    /* align-items: start; */
+}
+.grid-item-filter{
+    grid-area: filters;
+    margin: 1rem .5rem 1rem 1rem;
+    background-color: white;
+    padding: 1rem;
+    /* position: -webkit-sticky;
+    position: sticky;
+    top: 80px; */
+}
+.grid-item-products{
+    grid-area: products;
+    margin: 1rem 1rem 1rem .5rem;
+    background-color: white;
+    padding: 1rem 1rem;
+}
+img{
+    max-width: 100%;
+    object-fit: cover;
+    height: auto;
+    display: block;
+}
+
+.grid-item-products .grid-product-heading{
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.grid-item-products .grid-product-heading .filter{   
+    background-color: green;
+    color: white; 
+    padding: 0 1em;
+    border-radius: .3em;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    cursor: default;
+    position: relative;
+    
+}
+.grid-item-products .grid-product-heading .filter:hover .filter-option{
+    visibility: visible;
+    opacity: 1;
+}
+.grid-item-products .grid-product-heading .filter .filter-head .filter-head-arrow{
+    transform: rotate(80deg);
+}
+.grid-item-products .grid-product-heading .filter .filter-option{
+    position: absolute;
+    top: 25px;
+    left: 0;
+    border-radius: inherit;
+    color: black;
+    background-color: rgb(244, 244, 244);
+    box-shadow: 0 0 10px #8888;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s;
+    width: 100%;
+}
+.grid-item-products .grid-product-heading .filter .filter-option ul{
+    padding: 0;
+    margin: 0;
+}
+.grid-item-products .grid-product-heading .filter .filter-option ul li{
+    list-style: none;
+    padding: .2em .6em;
+    cursor: pointer;
+}
+.grid-item-products .grid-product-heading .filter .filter-option ul li:hover{
+    background-color: rgb(228, 228, 228);
+    color: green;
+}
+.serch-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    align-items: center; 
+    border: 1px solid rgb(245, 245, 245);
+    border-radius: 3px;
+    overflow: hidden;
+    gap: 5px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+.serch-card .serch-img{
+    width: 20%;
+    height: 100%;
+    flex: none;
+}
+.serch-card .serch-img img{
+    aspect-ratio: 1/1.2;
+    width: 100%;
+    height: 100%;
+}
+.serch-card .serch-body{
+    padding: 0 2rem;
+}
+
+.serch-body .serch-body-title{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.serch-body .serch-body-limited{
+    background-color: green;
+    display: inline-block;
+    color: white;
+    padding: 0 .5rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.serch-body .serch-body-prices{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.serch-body .serch-body-prices sub{
+    font-size: .7em;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+.serch-body .serch-body-prices :last-child{
+    font-size: .8em;
+    color: green;
+}
+.serch-body p{
+    margin: 0 0 .5rem 0;
+}
+.serch-body .serch-body-divivery-time span{
+    font-weight: 500;
+}
+
+.grid-item-products .No-data-found img{
+    width: 500px!important;
+    margin:  0 auto;
+}
+
+.grid-item-filter .filter{
+    font-size: 1.3rem;
+    padding-bottom: .6rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgb(239, 239, 239);
+}
+.grid-item-filter .price{
+    border-bottom: 1px solid rgb(239, 239, 239);
+}
+.grid-item-filter .price .price-range input{
+    width: 80%;
+}
+.grid-item-filter .price .priceMinAndMax{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem 0;
+}

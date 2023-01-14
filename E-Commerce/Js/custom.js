@@ -8,10 +8,12 @@ var classpostload = document.getElementsByClassName('postload')
 window.addEventListener('load',()=>{
   let whatsappicon = document.getElementsByClassName('whatsapp-icons')[0]
   for(let postload of classpostload){
-          setTimeout(()=>{
-            postload.classList.remove('postload')     
-            preloader.style.display = 'none';
-          },1000)
+      if(postload && preloader){
+        setTimeout(()=>{
+          postload.classList.remove('postload')     
+          preloader.style.display = 'none';
+        },1000)
+      }
     }
     setTimeout(()=>{
       whatsappicon.style.opacity = '1'
@@ -21,6 +23,8 @@ window.addEventListener('load',()=>{
       whatsappicon.style.bottom = '30px'      
     },1500)
 })
+
+
 
 
 window.addEventListener('scroll',()=>{
@@ -224,3 +228,52 @@ function decrimentprd(e){
     TotalAmount = 0
   }
 }
+
+
+
+///search item
+let serachForm = document.querySelector('[role="search"]')
+let inp = serachForm[0]
+let sbtn = serachForm[1]
+
+  inp.addEventListener('input',(e)=>{
+    if(inp.value){
+      let searchdivs = document.getElementById('searchoption')
+      if(searchdivs){
+        searchdivs.remove();
+      }
+      let searchdiv = document.createElement('div')
+      searchdiv.id = 'searchoption'
+      searchdiv.className = 'searchdiv'
+      let ul = document.createElement('ul')
+      ul.type = 'none'
+      fetch(`https://dummyjson.com/products/search?q=${inp.value}`)
+      .then(response=>response.json())
+      .then(result=> { 
+        console.log(result)
+        result.products.map( (item)=>{
+          let li = document.createElement('li')
+          li.innerText = item.title         
+          ul.appendChild(li)
+        })      
+      })
+      searchdiv.appendChild(ul)
+      serachForm.appendChild(searchdiv)
+    }
+    else{
+      let searchdiv = document.getElementById('searchoption')
+      if(searchdiv){
+        searchdiv.remove();
+      }
+    }
+  })
+
+
+
+sbtn.addEventListener('click',(e)=>{
+    e.preventDefault()
+    let inpvalue = inp.value;
+    if(inpvalue){      
+      window.location.href = `../Component/serachProduct.html?search&q=${inpvalue}`
+    }
+})

@@ -265,6 +265,28 @@ header{
 }
 .navbar .nav-1 .collapse form{
     width: 60%;
+    position: relative;
+}
+.navbar .nav-1 .collapse form .searchdiv{
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: white;
+    z-index: 500;
+    box-shadow: 0 0 10px #8888;
+    width: 100%;
+    border-radius: 5px;
+}
+.navbar .nav-1 .collapse form .searchdiv ul{
+    padding: 0;
+    margin: 0;
+}
+.navbar .nav-1 .collapse form .searchdiv ul li {
+    padding: .5em 1em;
+}
+.navbar .nav-1 .collapse form .searchdiv ul li:hover{
+    cursor: pointer;
+    background-color: rgb(196, 245, 205);
 }
 .navbar .nav-1 .collapse .navbar .container-fluid .navbar-collapse .navbar-nav li a:hover{
     border-bottom: .5px solid var(--textColor);
