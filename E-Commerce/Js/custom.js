@@ -66,6 +66,7 @@ let itemDiscount = 3.00
 let OnlineCardDiscount = 5.35
 let TotalAmount = 0.00
 let GrandTotal = 0.00
+let Gst = 5.00
 
 if(localStorage.getItem('cart')){
   let CartItem = JSON.parse(localStorage.getItem('cart'))
@@ -96,6 +97,7 @@ if(localStorage.getItem('cart')){
   }
       document.getElementById('TotalAmount').innerHTML = `$${TotalAmount}`
       GrandTotal = TotalAmount - itemDiscount - OnlineCardDiscount
+      GrandTotal = (GrandTotal*Gst)/100;
       document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
       document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
 }
@@ -163,6 +165,7 @@ function incrimentprd(e){
 
     //29.49    5%  online discount
     GrandTotal = GrandTotal - OnlineCardDiscount
+    GrandTotal = (GrandTotal*Gst)/100;
     document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
     document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
   }
@@ -196,6 +199,7 @@ function decrimentprd(e){
 
     //29.49    5%  online discount
     GrandTotal = GrandTotal - OnlineCardDiscount
+    GrandTotal = (GrandTotal*Gst)/100;
     document.getElementById('GrandTotal').innerHTML = `$${GrandTotal}`
     document.getElementById('OverAllTotal').innerHTML = `$${GrandTotal}`
 
