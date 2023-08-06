@@ -14,6 +14,9 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 
 
+
+
+
 function displayUserShow(name){
     let afdiv =  document.querySelectorAll('.afterlogin')
     let bediv = document.querySelectorAll('.beforelogin')
