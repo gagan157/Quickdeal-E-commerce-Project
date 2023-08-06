@@ -35,6 +35,7 @@ function sendtoWhatsApp(){
 
 //signup
 function openSignup(){
+  clearForm('signup-inp')
   let signupDiv = document.getElementById('SIGNUP_PART')
   let signinDiv = document.getElementById('SIGNIN_PART')
 
@@ -43,6 +44,7 @@ function openSignup(){
 }
 //signin
 function openSignin(){
+  clearForm('log-inp')
   let signupDiv = document.getElementById('SIGNUP_PART')
   let signinDiv = document.getElementById('SIGNIN_PART')
 
@@ -118,46 +120,44 @@ function userSignup(e){
 
 //signin With Google
 function signinWithGoogle(){
+  let signupIds = {
+    part : "SIGNUP_PART",
+    btn : "signup-btn",
+    googlebtn : "signup-google-btn"
+  }
+  let signinIds = {
+    part : "SIGNIN_PART",
+    btn : "Login-btn",
+    googlebtn : "Login-google-btn"
+  }
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().languageCode = 'it';
-  firebase.auth().signInWithRedirect(provider);
-
+  disableAllWhenCreateAccount(true,signupIds)
+  disableAllWhenCreateAccount(true,signinIds)
   firebase.auth()
-  .getRedirectResult()
+  .signInWithPopup(provider)
   .then((result) => {
-    if (result.credential) {
-      /** @type {firebase.auth.OAuthCredential} */
-      var credential = result.credential;
-
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = credential.accessToken;
-      // ...
-    }
-    // The signed-in user info.
+    /** @type {firebase.auth.OAuthCredential} */
+    var credential = result.credential;
+    var token = credential.accessToken;
     var user = result.user;
-    console.log(credential)
-    console.log(token)
-    console.log(user)
-  }).catch((error) => {
-    // Handle Errors here.
+    window.location.href = '../home.html'
+    disableAllWhenCreateAccount(false,signupIds)
+  disableAllWhenCreateAccount(false,signinIds)
+  }).catch((error) => {   
     var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
+    var errorMessage = error.message;   
+    var email = error.email;    
     var credential = error.credential;
-    console.log(errorCode)
-    console.log(errorMessage)
-    console.log(email)
-    console.log(credential)
+    disableAllWhenCreateAccount(false,signupIds)
+  disableAllWhenCreateAccount(false,signinIds)
   });
+  
 }
 
 //login
 function userLogin(e){
   e.preventDefault();
- 
-  console.log(exampleModal)
   let signupIds = {
     part : "SIGNIN_PART",
     btn : "Login-btn",
@@ -176,7 +176,7 @@ function userLogin(e){
   .then((userCredential) => {
     // Signed in
     var user = userCredential.user;
-    console.log(user)
+    // console.log(user)
     errorDiv.style.display = 'none'
     errorDiv.innerText = ``
     disableAllWhenCreateAccount(false,signupIds)
