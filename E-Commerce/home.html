@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+   
+    <!-- firebase -->
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script defer type="module" src="./Js/firebaseConfig.js"></script>
+
 </head>
 <body>
     <div id="preloader"></div>
@@ -126,7 +135,17 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
               <ul class="navbar-nav mb-2 mb-lg-0 mx-3 nav-ul loginpartul">
-                  <li class="nav-item">
+                  <li class="nav-item afterlogin">
+                    <a class="nav-link">
+                      <i class="fa-solid fa-user"></i>
+                    <span id="username"></span></a>                      
+                  </li>                  
+                  <li class="nav-item afterlogin" onclick="userLogout()">
+                    <a class="nav-link">
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout</a>                      
+                  </li>                  
+                  <li class="nav-item beforelogin">
                     <a class="nav-link" aria-current="page" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-right-to-bracket"></i>
                     Login</a>                      
                   </li>                  
@@ -233,7 +252,7 @@
                       <p>log in to continue to more Shopping</p>
                     </div>
                 </div>
-                <div class="right-part">
+                <div id="SIGNIN_PART" class="right-part">
                   <div class="modal-header">
                     <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -243,13 +262,13 @@
                       <h1>Hello Again!</h1>
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nulla sit iste, ex harum magni blanditiis expedita aliquid libero</p>
                     </div>
-                    <form action="" method="post">      
+                    <form action="" method="post" onsubmit="userLogin(event)">      
                       <div class="login-inp position-relative">
-                        <input type="email" id="login-email" name="login-email" placeholder="Email">
+                        <input type="email" id="login-email" class="log-inp" name="login-email" placeholder="Email">
                         <i class="fa-regular fa-at login-inp-icons"></i>
                       </div> 
                       <div class="login-inp position-relative">
-                        <input type="password" id="login-password" name="login-password" placeholder="password">
+                        <input type="password" id="login-password" class="log-inp" name="login-password" placeholder="password">
                         <i class="fa-solid fa-lock login-inp-icons"></i>
                       </div>               
                       <div class="check-recovery">
@@ -259,17 +278,54 @@
                         </div>
                         <a href="">Recovery Password</a>
                       </div>
+                      <span id="login-error" style="color: red; font-size: smaller; display: none;"></span>
                       <div class="login-btns">
-                        <button class="login-btn" type="button">Login</button>
-                        <button class="login-btn-google" type="button"><i class="fa-brands fa-google mx-2 text-danger"></i>Sign in with Google</button>
+                        <button class="login-btn" id="Login-btn" type="submit">Login</button>
+                        <button class="login-btn-google" id="Login-google-btn" type="button"><i class="fa-brands fa-google mx-2 text-danger"></i>Sign in with Google</button>
                       </div>
                       </form>
                   </div>
                   <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button> -->
-                    <h5>Dont't have an account yet?</h5>
-                    <button type="button">Sign Up</button>
+                    <h5>Don't have an account yet?</h5>
+                    <button type="button" onclick="openSignup()">Sign Up</button>
+                  </div>
+                </div>
+                <div id="SIGNUP_PART" class="right-part" style="display: none;">
+                  <div class="modal-header">
+                    <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="model-body-text">
+                      <h1>Sign Up</h1>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nulla sit iste, ex harum magni blanditiis</p>
+                    </div>
+                    <form method="post" onsubmit="userSignup(event)">      
+                      <div class="login-inp position-relative">
+                        <input required type="text" id="signup-name" class="signup-inp" name="signup-name" placeholder="Name">                       
+                      </div> 
+                      <div class="login-inp position-relative">
+                        <input required type="email" id="signup-email" class="signup-inp" name="signup-email" placeholder="Email">
+                        <i class="fa-regular fa-at login-inp-icons"></i>
+                      </div> 
+                      <div class="login-inp position-relative">
+                        <input required type="password" id="signup-password" class="signup-inp" name="signup-password" placeholder="password">
+                        <i class="fa-solid fa-lock login-inp-icons"></i>
+                      </div>
+                      <span id="signup-error" style="color: red; font-size: smaller; display: none;"></span>               
+                      <div class="login-btns">
+                        <button type="submit" class="login-btn" id="signup-btn" type="button">Signup</button>
+                        <button  class="login-btn-google" id="signup-google-btn" type="button"><i class="fa-brands fa-google mx-2 text-danger"></i>Sign up with Google</button>
+                      </div>
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button> -->
+                    <h5>If you have already Registed?</h5>
+                    <button type="button" onclick="openSignin()">Sign In</button>
                   </div>
                 </div>
               </div>
@@ -570,7 +626,7 @@
       </div>
       
       <!--=========== ====whatsapp=================== -->
-      <div class="postload whatsapp-icons">
+      <div class="postload whatsapp-icons" onclick="sendtoWhatsApp()">
         <i class="fa-brands fa-whatsapp"></i>
       </div>
       <!----------------------------- footer--------------------- -->
@@ -636,15 +692,20 @@
           </div>
         </section>
         <section class="copyright-sec-footer">
-            <h3><span>&#169;</span>2022 Copyright: Quickdeal.com</h3>
+            <h3><span>&#169;</span>2022 Copyright: Quickdeal.com <span class="owner">Created by Prabhjot</span></h3>           
         </section>
       </footer>
 
       
     
       <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    
+     
+     
+      
       <script src="./Js/custom.js"></script>
       <script src="./Js/home.js"></script>     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
 </body>
 </html>

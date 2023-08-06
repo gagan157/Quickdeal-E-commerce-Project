@@ -1,6 +1,4 @@
 
-
-
 var preloader = document.getElementById('preloader');
 // var postload = document.getElementById('postload');
 var classpostload = document.getElementsByClassName('postload')
@@ -26,6 +24,145 @@ window.addEventListener('load',()=>{
 
 
 
+
+
+
+//whats app link
+function sendtoWhatsApp(){
+  console.log("working whats app")
+    window.open('https://wa.me/8368620076','_blank')
+}
+
+//signup
+function openSignup(){
+  let signupDiv = document.getElementById('SIGNUP_PART')
+  let signinDiv = document.getElementById('SIGNIN_PART')
+
+  signinDiv.style.display = 'none'
+  signupDiv.style.display = 'flex'
+}
+//signin
+function openSignin(){
+  let signupDiv = document.getElementById('SIGNUP_PART')
+  let signinDiv = document.getElementById('SIGNIN_PART')
+
+  signinDiv.style.display = 'flex'
+  signupDiv.style.display = 'none'
+}
+
+function disableAllWhenCreateAccount(bool,{part,btn,googlebtn}){
+  let signupDiv = document.getElementById(part)
+  let signupbtn = document.getElementById(btn)
+  let signupgooglebtn = document.getElementById(googlebtn)
+  if(bool){
+    signupDiv.style.cursor = "progress"
+    signupbtn.style.cursor = "progress"
+    signupbtn.setAttribute('disabled',true)
+    signupgooglebtn.style.cursor = "progress"
+    signupgooglebtn.setAttribute('disabled',true)
+  }
+  else{
+    signupDiv.style.cursor = "default"
+    signupbtn.style.cursor = "pointer"
+    signupbtn.removeAttribute('disabled')
+    signupgooglebtn.style.cursor = "pointer"
+    signupgooglebtn.removeAttribute('disabled')
+  }
+}
+function clearForm(clsname){
+  let inps = document.querySelectorAll(`.${clsname}`)
+  for(let inp of inps){
+    inp.value = ""
+  }
+}
+
+//userSignup
+function userSignup(e){
+  e.preventDefault();
+  // console.log(e.target)
+  let signupIds = {
+    part : "SIGNUP_PART",
+    btn : "signup-btn",
+    googlebtn : "signup-google-btn"
+  }
+  disableAllWhenCreateAccount(true,signupIds)
+  let errorDiv = document.getElementById('signup-error')
+  let formdata = new FormData(e.target)
+  let userSignupData = {}
+  for (let [key, value] of formdata) {
+    key = key.split('-')[1]
+    userSignupData[key] = value
+  }
+  firebase.auth().createUserWithEmailAndPassword(userSignupData.email, userSignupData.password)
+  .then((userCredential) => {
+    // Signed up
+    var user = userCredential.user;
+    user.updateProfile({
+      displayName: userSignupData.name,
+    })
+    console.log(user)
+    errorDiv.style.display = 'none'
+    errorDiv.innerText = ''
+    disableAllWhenCreateAccount(false,signupIds)
+    clearForm("signup-inp")
+    openSignin()
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    errorDiv.style.display = 'unset'
+    errorDiv.innerText = `*${errorMessage}`
+    disableAllWhenCreateAccount(false,signupIds)
+  });
+}
+
+//login
+function userLogin(e){
+  e.preventDefault();
+ 
+  console.log(exampleModal)
+  let signupIds = {
+    part : "SIGNIN_PART",
+    btn : "Login-btn",
+    googlebtn : "Login-google-btn"
+  }
+  disableAllWhenCreateAccount(true,signupIds)
+  let errorDiv = document.getElementById('login-error')
+  let formdata = new FormData(e.target)
+  let logindata = {}
+  for(let [key,val] of formdata){
+    key = key.split('-')[1]
+    logindata[key] = val
+  }
+  //singin fun
+  firebase.auth().signInWithEmailAndPassword(logindata.email, logindata.password)
+  .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    console.log(user)
+    errorDiv.style.display = 'none'
+    errorDiv.innerText = ``
+    disableAllWhenCreateAccount(false,signupIds)
+    clearForm("log-inp")
+    window.location.href = '/home.html'
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    errorDiv.style.display = 'unset'
+    errorDiv.innerText = `Email or Password Not Correct`
+    disableAllWhenCreateAccount(false,signupIds)
+  });
+
+}
+
+function userLogout(){
+  firebase.auth().signOut().then(() => {
+    window.location.href = "../home.html"
+  }).catch((error) => {
+    // An error happened.
+  });
+}
 
 window.addEventListener('scroll',()=>{
   var header = document.getElementById('header')

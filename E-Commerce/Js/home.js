@@ -14,6 +14,9 @@ var swiper = new Swiper(".mySwiper", {
   },
 });
 
+
+
+
 let dataLoad = false;
 let AllProducts = [];
 // add to cart function

@@ -264,7 +264,8 @@ header{
     justify-content: space-around;
 }
 .navbar .nav-1 .collapse form{
-    width: 60%;
+    /* width: 50%; */
+    flex-grow: 1;
     position: relative;
 }
 .navbar .nav-1 .collapse form .searchdiv{
@@ -326,6 +327,9 @@ header{
 .navbar .collapse .loginpartul li a:hover{
     color: var(--secondryColor);
 }
+/* .navbar .collapse .navbar-nav .nav-item .nav-link{
+    text-align: center;
+} */
 /* ===================sub nav======================== */
 header .sub-nav{
     width: 100%;
@@ -602,7 +606,8 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
     height: 40px;
     margin: 1rem 0;
 }
-.modal-dialog .modal-content .right-part .modal-body form .login-inp #login-email,#login-password{
+.modal-dialog .modal-content .right-part .modal-body form .login-inp #login-email,#login-password,#login-name
+,#signup-name,#signup-email,#signup-password{
     display: block;
     width: 100%;
     height: 100%;
@@ -622,26 +627,34 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
     align-items: center;
 }
 /* hover */
-.modal-dialog .modal-content .right-part .modal-body form .login-inp:hover #login-email,.login-inp:hover #login-password{
+.modal-dialog .modal-content .right-part .modal-body form .login-inp:hover #login-email,.login-inp:hover #login-password, .login-inp:hover #login-name,
+.login-inp:hover #signup-name,.login-inp:hover #signup-email,.login-inp:hover #signup-password
+{
     border: 2px solid var(--secondryColor);
 }
 .modal-dialog .modal-content .right-part .modal-body form .login-inp:hover :last-child{
     color: var(--secondryColor);
 }
 /* focus */
-.modal-dialog .modal-content .right-part .modal-body form .login-inp #login-email:focus,#login-password:focus{
+.modal-dialog .modal-content .right-part .modal-body form .login-inp #login-email:focus,#login-password:focus,#login-name:focus,
+#signup-name:focus,#signup-email:focus,#signup-password:focus
+{
     border: 2px solid var(--secondryColor);
     outline: none;
 }
-.modal-dialog .modal-content .right-part .modal-body form .login-inp #login-email:focus+i,#login-password:focus+i{
+.modal-dialog .modal-content .right-part .modal-body form .login-inp #login-email:focus+i,#login-password:focus+i,
+#signup-email:focus+i,#signup-password:focus+i
+{
     color: var(--secondryColor);
 }
 /* fill */
-.modal-dialog .modal-content .right-part .modal-body form .login-inp #login-email:not(:placeholder-shown),#login-password:not(:placeholder-shown){
+.modal-dialog .modal-content .right-part .modal-body form .login-inp #login-email:not(:placeholder-shown),#login-password:not(:placeholder-shown),#login-name:not(:placeholder-shown),
+#signup-email:not(:placeholder-shown),#signup-password:not(:placeholder-shown),#signup-name:not(:placeholder-shown)
+{
     border: 2px solid var(--secondryColor);
     outline: none;
 }
-.modal-dialog .modal-content .right-part .modal-body form .login-inp #login-email:not(:placeholder-shown)+i,#login-password:not(:placeholder-shown)+i{
+.modal-dialog .modal-content .right-part .modal-body form .login-inp #login-email:not(:placeholder-shown)+i,#login-password:not(:placeholder-shown)+i,#signup-email:not(:placeholder-shown)+i,#signup-password:not(:placeholder-shown)+i{
     color: var(--secondryColor);
 }
 
@@ -650,7 +663,7 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3rem;
+    /* margin-bottom: 3rem; */
     font-size: .8rem;
 }
 .modal-dialog .modal-content .right-part .modal-body form .login-btns{
@@ -1523,6 +1536,11 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
 .copyright-sec-footer h3 span{
     font-size: 20px;
 }
+.copyright-sec-footer h3 .owner{
+    font-size: smaller;
+    margin-left: .5em;
+    text-transform: uppercase;
+}
 
 .main-footer-section{
     /* border-top: 5px solid var(--textColor); */
@@ -1830,6 +1848,10 @@ header .sub-nav .navsub-list-items .navsub-list-item .sub-nav-dropdown .sub-nav-
 @media only screen and (max-width:992px) {
     footer .main-footer-section{
         padding: 1rem 0!important;
+    }
+    .navbar .nav-1 .collapse form{
+        width: 90%;
+        margin: auto;
     }
 }
 @media only screen and (max-width:771px){
